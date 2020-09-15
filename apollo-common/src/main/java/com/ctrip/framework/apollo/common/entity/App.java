@@ -1,6 +1,8 @@
 package com.ctrip.framework.apollo.common.entity;
 
 import com.ctrip.framework.apollo.common.utils.InputValidator;
+
+import javax.persistence.Index;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Pattern;
 import org.hibernate.annotations.SQLDelete;
@@ -11,8 +13,12 @@ import javax.persistence.Entity;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "APP")
-@SQLDelete(sql = "Update APP set DELETED_FLAG = 1 where id = ?")
+@Table(name = "APP",indexes = {
+        @Index(name = "IDX_APP_APP_ID", columnList = "APP_ID"),
+        @Index(name = "IDX_APP_NAME", columnList = "NAME"),
+        @Index(name = "IDX_APP_DATACHANGE_LASTTIME", columnList = "DATACHANGE_LASTTIME"),
+})
+@SQLDelete(sql = "Update APP set DELETED_FLAG = 1 where ID = ?")
 @Where(clause = "DELETED_FLAG = 0")
 public class App extends BaseEntity {
 

@@ -4,6 +4,7 @@ package com.ctrip.framework.apollo.common.entity;
 import com.ctrip.framework.apollo.common.utils.InputValidator;
 import com.ctrip.framework.apollo.core.enums.ConfigFileFormat;
 
+import javax.persistence.Index;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Pattern;
 import org.hibernate.annotations.SQLDelete;
@@ -14,9 +15,13 @@ import javax.persistence.Entity;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "AppNamespace")
-@SQLDelete(sql = "Update AppNamespace set isDeleted = 1 where id = ?")
-@Where(clause = "isDeleted = 0")
+@Table(name = "APP_NAMESPACE",indexes = {
+        @Index(name = "IDX_APP_NAMESPACE_APP_ID", columnList = "APP_ID"),
+        @Index(name = "IDX_APP_NAMESPACE_NAME", columnList = "NAME"),
+        @Index(name = "IDX_APPNASP_CHANGE_LASTTIME", columnList = "DATACHANGE_LASTTIME"),
+})
+@SQLDelete(sql = "Update APP_NAMESPACE set DELETED_FLAG = 1 where ID = ?")
+@Where(clause = "DELETED_FLAG = 0")
 public class AppNamespace extends BaseEntity {
 
   @NotBlank(message = "AppNamespace Name cannot be blank")
@@ -24,20 +29,20 @@ public class AppNamespace extends BaseEntity {
       regexp = InputValidator.CLUSTER_NAMESPACE_VALIDATOR,
       message = "Invalid Namespace format: " + InputValidator.INVALID_CLUSTER_NAMESPACE_MESSAGE + " & " + InputValidator.INVALID_NAMESPACE_NAMESPACE_MESSAGE
   )
-  @Column(name = "Name", nullable = false)
+  @Column(name = "NAME", nullable = false)
   private String name;
 
   @NotBlank(message = "AppId cannot be blank")
-  @Column(name = "AppId", nullable = false)
+  @Column(name = "APP_ID", nullable = false)
   private String appId;
 
-  @Column(name = "Format", nullable = false)
+  @Column(name = "FORMAT", nullable = false)
   private String format;
 
-  @Column(name = "IsPublic", columnDefinition = "Number(1) default 0 ")
+  @Column(name = "PUBLIC_FLAG", columnDefinition = "Number(1) default 0 ")
   private boolean isPublic = false;
 
-  @Column(name = "Comment")
+  @Column(name = "COMMENT_MSG")
   private String comment;
 
   public String getAppId() {
