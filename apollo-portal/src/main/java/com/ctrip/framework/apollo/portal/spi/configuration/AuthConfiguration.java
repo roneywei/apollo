@@ -232,23 +232,23 @@ public class AuthConfiguration {
         DataSource datasource) throws Exception {
       JdbcUserDetailsManager jdbcUserDetailsManager = auth.jdbcAuthentication()
           .passwordEncoder(new BCryptPasswordEncoder()).dataSource(datasource)
-          .usersByUsernameQuery("select Username,Password,Enabled from `Users` where Username = ?")
+          .usersByUsernameQuery("SELECT USERNAME,PASSWORD,ENABLED FROM USERS WHERE USERNAME = ?")
           .authoritiesByUsernameQuery(
-              "select Username,Authority from `Authorities` where Username = ?")
+              "SELECT USERNAME,AUTHORITY FROM AUTHORITIES WHERE USERNAME = ?")
           .getUserDetailsService();
 
-      jdbcUserDetailsManager.setUserExistsSql("select Username from `Users` where Username = ?");
+      jdbcUserDetailsManager.setUserExistsSql("SELECT USERNAME FROM USERS WHERE USERNAME = ?");
       jdbcUserDetailsManager
-          .setCreateUserSql("insert into `Users` (Username, Password, Enabled) values (?,?,?)");
+          .setCreateUserSql("INSERT INTO USERS (USERNAME, PASSWORD, ENABLED) VALUES (?,?,?)");
       jdbcUserDetailsManager
-          .setUpdateUserSql("update `Users` set Password = ?, Enabled = ? where id = (select u.id from (select id from `Users` where Username = ?) as u)");
-      jdbcUserDetailsManager.setDeleteUserSql("delete from `Users` where id = (select u.id from (select id from `Users` where Username = ?) as u)");
+          .setUpdateUserSql("UPDATE USERS SET PASSWORD = ?, ENABLED = ? WHERE ID = (SELECT U.ID FROM (SELECT ID FROM USERS WHERE USERNAME = ?) AS U)");
+      jdbcUserDetailsManager.setDeleteUserSql("DELETE FROM USERS WHERE ID = (SELECT U.ID FROM (SELECT ID FROM USERS WHERE USERNAME = ?) AS U)");
       jdbcUserDetailsManager
-          .setCreateAuthoritySql("insert into `Authorities` (Username, Authority) values (?,?)");
+          .setCreateAuthoritySql("INSERT INTO AUTHORITIES (USERNAME, AUTHORITY) VALUES (?,?)");
       jdbcUserDetailsManager
-          .setDeleteUserAuthoritiesSql("delete from `Authorities` where id in (select a.id from (select id from `Authorities` where Username = ?) as a)");
+          .setDeleteUserAuthoritiesSql("DELETE FROM AUTHORITIES WHERE ID IN (SELECT A.ID FROM (SELECT ID FROM AUTHORITIES WHERE USERNAME = ?) AS A)");
       jdbcUserDetailsManager
-          .setChangePasswordSql("update `Users` set Password = ? where id = (select u.id from (select id from `Users` where Username = ?) as u)");
+          .setChangePasswordSql("UPDATE USERS SET PASSWORD = ? WHERE ID = (SELECT U.ID FROM (SELECT ID FROM USERS WHERE USERNAME = ?) AS U)");
 
       return jdbcUserDetailsManager;
     }
