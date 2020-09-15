@@ -34,7 +34,7 @@ public class AppNamespace extends BaseEntity {
   @Column(name = "Format", nullable = false)
   private String format;
 
-  @Column(name = "IsPublic", columnDefinition = "Bit default '0'")
+  @Column(name = "IsPublic", columnDefinition = "Number(1) default 0 ")
   private boolean isPublic = false;
 
   @Column(name = "Comment")

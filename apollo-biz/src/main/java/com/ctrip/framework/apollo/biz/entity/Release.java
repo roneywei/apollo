@@ -40,8 +40,8 @@ public class Release extends BaseEntity {
   @Column(name = "Comment", nullable = false)
   private String comment;
 
-  @Column(name = "IsAbandoned", columnDefinition = "Bit default '0'")
-  private boolean isAbandoned;
+  @Column(name = "IsAbandoned", columnDefinition = "Number(1) default 0 ")
+  private boolean isAbandoned = false;
 
   public String getReleaseKey() {
     return releaseKey;

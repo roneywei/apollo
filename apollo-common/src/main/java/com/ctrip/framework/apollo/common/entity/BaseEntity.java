@@ -17,19 +17,19 @@ public abstract class BaseEntity {
   @Column(name = "ID")
   private long id;
 
-  @Column(name = "IsDeleted", columnDefinition = "Bit default '0'")
-  protected boolean isDeleted = false;
+  @Column(name = "DELETED_FLAG" , columnDefinition = "Number(1) default 0 ")
+  private Boolean isDeleted = false;
 
-  @Column(name = "DataChange_CreatedBy", nullable = false)
+  @Column(name = "DATACHANGE_CREATEDBY", nullable = false)
   private String dataChangeCreatedBy;
 
-  @Column(name = "DataChange_CreatedTime", nullable = false)
+  @Column(name = "DATACHANGE_CREATEDTIME", nullable = false)
   private Date dataChangeCreatedTime;
 
-  @Column(name = "DataChange_LastModifiedBy")
+  @Column(name = "DATACHANGE_LASTMODIFIEDBY")
   private String dataChangeLastModifiedBy;
 
-  @Column(name = "DataChange_LastTime")
+  @Column(name = "DATACHANGE_LASTTIME")
   private Date dataChangeLastModifiedTime;
 
   public String getDataChangeCreatedBy() {

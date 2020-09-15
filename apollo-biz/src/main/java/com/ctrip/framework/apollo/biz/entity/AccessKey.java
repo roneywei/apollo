@@ -20,8 +20,8 @@ public class AccessKey extends BaseEntity {
   @Column(name = "Secret", nullable = false)
   private String secret;
 
-  @Column(name = "isEnabled", columnDefinition = "Bit default '0'")
-  private boolean enabled;
+  @Column(name = "isEnabled", columnDefinition = "Number(1) default 0 ")
+  private boolean enabled = false;
 
   public String getAppId() {
     return appId;
