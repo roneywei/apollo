@@ -3,6 +3,11 @@ spring:
     name: apollo-configservice
   profiles:
     active: ${apollo_profile}
+  datasource:
+    driver-class-name: oracle.jdbc.driver.OracleDriver
+    password: tpmall
+    url: jdbc:oracle:thin:@//127.0.0.1:1521/orcl
+    username: tpmall
 
 ctrip:
   appid: 100003171
