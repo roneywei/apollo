@@ -2,12 +2,7 @@ package com.ctrip.framework.apollo.portal.entity.po;
 
 import com.ctrip.framework.apollo.portal.entity.bo.UserInfo;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 /**
  * @author lepdou 2017-04-08
@@ -17,8 +12,9 @@ import javax.persistence.Table;
 public class UserPO {
 
   @Id
-  @GeneratedValue(strategy = GenerationType.IDENTITY)
-  @Column(name = "Id")
+  @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "sequence")
+  @SequenceGenerator(name = "sequence", sequenceName = "APOLLO_ID_SEQ", allocationSize = 1)
+  @Column(name = "ID")
   private long id;
   @Column(name = "Username", nullable = false)
   private String username;
