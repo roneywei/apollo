@@ -14,8 +14,8 @@ import javax.persistence.Table;
  */
 @Entity
 @Table(name = "Role")
-@SQLDelete(sql = "Update Role set isDeleted = 1 where id = ?")
-@Where(clause = "isDeleted = 0")
+@SQLDelete(sql = "Update Role set DELETED_FLAG = 1 where ID = ?")
+@Where(clause = "DELETED_FLAG = 0")
 public class Role extends BaseEntity {
   @Column(name = "RoleName", nullable = false)
   private String roleName;

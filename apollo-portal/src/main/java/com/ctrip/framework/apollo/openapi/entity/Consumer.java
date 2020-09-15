@@ -10,9 +10,9 @@ import javax.persistence.Entity;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "Consumer")
-@SQLDelete(sql = "Update Consumer set isDeleted = 1 where id = ?")
-@Where(clause = "isDeleted = 0")
+@Table(name = "CONSUMER")
+@SQLDelete(sql = "Update CONSUMER set DELETED_FLAG = 1 where id = ?")
+@Where(clause = "DELETED_FLAG = 0")
 public class Consumer extends BaseEntity {
 
   @Column(name = "Name", nullable = false)

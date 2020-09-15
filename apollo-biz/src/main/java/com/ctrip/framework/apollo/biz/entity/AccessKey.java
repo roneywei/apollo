@@ -10,8 +10,8 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "AccessKey")
-@SQLDelete(sql = "Update AccessKey set isDeleted = 1 where id = ?")
-@Where(clause = "isDeleted = 0")
+@SQLDelete(sql = "Update AccessKey set DELETED_FLAG = 1 where ID = ?")
+@Where(clause = "DELETED_FLAG = 0")
 public class AccessKey extends BaseEntity {
 
   @Column(name = "appId", nullable = false)
