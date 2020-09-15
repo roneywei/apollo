@@ -20,16 +20,16 @@ public abstract class BaseEntity {
   @Column(name = "DELETED_FLAG" , columnDefinition = "Number(1) default 0 ")
   private Boolean isDeleted = false;
 
-  @Column(name = "DATACHANGE_CREATEDBY", nullable = false)
+  @Column(name = "DATACHANGE_CREATEDBY", columnDefinition = "VARCHAR2(255) DEFAULT 'apollo'  NOT NULL")
   private String dataChangeCreatedBy;
 
-  @Column(name = "DATACHANGE_CREATEDTIME", nullable = false)
+  @Column(name = "DATACHANGE_CREATEDTIME", columnDefinition = "TIMESTAMP(6)  DEFAULT CURRENT_TIMESTAMP  NOT NULL ")
   private Date dataChangeCreatedTime;
 
-  @Column(name = "DATACHANGE_LASTMODIFIEDBY")
+  @Column(name = "DATACHANGE_LASTMODIFIEDBY", columnDefinition = "VARCHAR2(255) DEFAULT 'apollo'  NOT NULL")
   private String dataChangeLastModifiedBy;
 
-  @Column(name = "DATACHANGE_LASTTIME")
+  @Column(name = "DATACHANGE_LASTTIME", columnDefinition = "TIMESTAMP(6)  DEFAULT CURRENT_TIMESTAMP  NOT NULL ")
   private Date dataChangeLastModifiedTime;
 
   public String getDataChangeCreatedBy() {
@@ -82,11 +82,17 @@ public abstract class BaseEntity {
 
   @PrePersist
   protected void prePersist() {
+    if(this.dataChangeCreatedBy == null){
+      dataChangeCreatedBy = "apollo";
+    }
     if (this.dataChangeCreatedTime == null) {
         dataChangeCreatedTime = new Date();
     }
     if (this.dataChangeLastModifiedTime == null) {
         dataChangeLastModifiedTime = new Date();
+    }
+    if(this.dataChangeLastModifiedBy == null){
+      dataChangeLastModifiedBy = "apollo";
     }
   }
 

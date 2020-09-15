@@ -4,10 +4,7 @@ import com.ctrip.framework.apollo.common.entity.BaseEntity;
 import org.hibernate.annotations.SQLDelete;
 import org.hibernate.annotations.Where;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Index;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 /**
  * Created by Roney on 2020/9/15.
@@ -17,14 +14,26 @@ import javax.persistence.Table;
  */
 @Entity
 @Table(name = "AUTHORITIES")
-@SQLDelete(sql = "Update AUTHORITIES set DELETED_FLAG = 1 where ID = ?")
-@Where(clause = "DELETED_FLAG = 0")
-public class Authorities  extends BaseEntity {
+public class Authorities   {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "sequence")
+    @SequenceGenerator(name = "sequence", sequenceName = "APOLLO_ID_SEQ", allocationSize = 1)
+    @Column(name = "ID")
+    private long id;
     @Column(name = "USERNAME", nullable = false)
     private String username;
 
     @Column(name = "AUTHORITY", nullable = false)
-    private long authority;
+    private String authority;
+
+    public long getId() {
+        return id;
+    }
+
+    public void setId(long id) {
+        this.id = id;
+    }
 
     public String getUsername() {
         return username;
@@ -34,11 +43,11 @@ public class Authorities  extends BaseEntity {
         this.username = username;
     }
 
-    public long getAuthority() {
+    public String getAuthority() {
         return authority;
     }
 
-    public void setAuthority(long authority) {
+    public void setAuthority(String authority) {
         this.authority = authority;
     }
 }
