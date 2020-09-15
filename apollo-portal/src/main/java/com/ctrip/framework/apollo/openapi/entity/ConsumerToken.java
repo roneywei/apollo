@@ -9,23 +9,28 @@ import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.Index;
 import javax.persistence.Table;
 
 /**
  * @author Jason Song(song_s@ctrip.com)
  */
 @Entity
-@Table(name = "ConsumerToken")
-@SQLDelete(sql = "Update ConsumerToken set DELETED_FLAG = 1 where ID = ?")
+@Table(name = "CONSUMER_TOKEN",indexes = {
+        @Index(name = "IDX_CONTOKEN_CONSUMER_ID", columnList = "CONSUMER_ID"),
+        @Index(name = "IDX_CONTOKEN_TOKEN", columnList = "TOKEN",unique = true),
+        @Index(name = "IDX_CONTOKEN_CHANGE_LASTTIME", columnList = "DATACHANGE_LASTTIME"),
+})
+@SQLDelete(sql = "Update CONSUMER_TOKEN set DELETED_FLAG = 1 where ID = ?")
 @Where(clause = "DELETED_FLAG = 0")
 public class ConsumerToken extends BaseEntity {
-  @Column(name = "ConsumerId", nullable = false)
+  @Column(name = "CONSUMER_ID", nullable = false)
   private long consumerId;
 
-  @Column(name = "token", nullable = false)
+  @Column(name = "TOKEN", nullable = false)
   private String token;
 
-  @Column(name = "Expires", nullable = false)
+  @Column(name = "EXPIRES", nullable = false)
   private Date expires;
 
   public long getConsumerId() {

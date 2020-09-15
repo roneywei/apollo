@@ -2,6 +2,7 @@ package com.ctrip.framework.apollo.portal.entity.po;
 
 import com.ctrip.framework.apollo.common.entity.BaseEntity;
 
+import javax.persistence.Index;
 import javax.validation.constraints.NotBlank;
 import org.hibernate.annotations.SQLDelete;
 import org.hibernate.annotations.Where;
@@ -14,19 +15,23 @@ import javax.persistence.Table;
  * @author Jason Song(song_s@ctrip.com)
  */
 @Entity
-@Table(name = "ServerConfig")
-@SQLDelete(sql = "Update ServerConfig set DELETED_FLAG = 1 where ID = ?")
+@Table(name = "SERVER_CONFIG",indexes = {
+        @Index(name = "IDX_SERCONFIG_CONFIG_KEY", columnList = "CONFIG_KEY"),
+        @Index(name = "IDX_SERCONFIG_CONFIG_VALUE", columnList = "CONFIG_VALUE"),
+        @Index(name = "IDX_SERCONFIG_CHANGE_LASTTIME", columnList = "DATACHANGE_LASTTIME"),
+})
+@SQLDelete(sql = "Update SERVER_CONFIG set DELETED_FLAG = 1 where ID = ?")
 @Where(clause = "DELETED_FLAG = 0")
 public class ServerConfig extends BaseEntity {
   @NotBlank(message = "ServerConfig.Key cannot be blank")
-  @Column(name = "Key", nullable = false)
+  @Column(name = "CONFIG_KEY", nullable = false)
   private String key;
 
   @NotBlank(message = "ServerConfig.Value cannot be blank")
-  @Column(name = "Value", nullable = false)
+  @Column(name = "CONFIG_VALUE", nullable = false)
   private String value;
 
-  @Column(name = "Comment", nullable = false)
+  @Column(name = "CONFIG_COMMENT", nullable = false)
   private String comment;
 
   public String getKey() {

@@ -7,17 +7,21 @@ import org.hibernate.annotations.Where;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.Index;
 import javax.persistence.Table;
 
 /**
  * @author Jason Song(song_s@ctrip.com)
  */
 @Entity
-@Table(name = "Role")
-@SQLDelete(sql = "Update Role set DELETED_FLAG = 1 where ID = ?")
+@Table(name = "ROLE",indexes = {
+        @Index(name = "IDX_ROLE_ROLE_NAME", columnList = "ROLE_NAME"),
+        @Index(name = "IDX_ROLE_CHANGE_LASTTIME", columnList = "DATACHANGE_LASTTIME"),
+})
+@SQLDelete(sql = "Update ROLE set DELETED_FLAG = 1 where ID = ?")
 @Where(clause = "DELETED_FLAG = 0")
 public class Role extends BaseEntity {
-  @Column(name = "RoleName", nullable = false)
+  @Column(name = "ROLE_NAME", nullable = false)
   private String roleName;
 
   public String getRoleName() {

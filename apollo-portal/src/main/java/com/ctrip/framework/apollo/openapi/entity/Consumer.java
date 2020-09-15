@@ -7,30 +7,34 @@ import org.hibernate.annotations.Where;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.Index;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "CONSUMER")
+@Table(name = "CONSUMER",indexes = {
+        @Index(name = "IDX_CONSUMER_APP_ID", columnList = "APP_ID"),
+        @Index(name = "IDX_CONSUMER_CHANGE_LASTTIME", columnList = "DATACHANGE_LASTTIME"),
+})
 @SQLDelete(sql = "Update CONSUMER set DELETED_FLAG = 1 where id = ?")
 @Where(clause = "DELETED_FLAG = 0")
 public class Consumer extends BaseEntity {
 
-  @Column(name = "Name", nullable = false)
+  @Column(name = "NAME", nullable = false)
   private String name;
 
-  @Column(name = "AppId", nullable = false)
+  @Column(name = "APP_ID", nullable = false)
   private String appId;
 
-  @Column(name = "OrgId", nullable = false)
+  @Column(name = "ORG_ID", nullable = false)
   private String orgId;
 
-  @Column(name = "OrgName", nullable = false)
+  @Column(name = "ORG_NAME", nullable = false)
   private String orgName;
 
-  @Column(name = "OwnerName", nullable = false)
+  @Column(name = "OWNER_NAME", nullable = false)
   private String ownerName;
 
-  @Column(name = "OwnerEmail", nullable = false)
+  @Column(name = "OWNER_EMAIL", nullable = false)
   private String ownerEmail;
 
   public String getAppId() {

@@ -8,7 +8,7 @@ import javax.persistence.*;
  * @author lepdou 2017-04-08
  */
 @Entity
-@Table(name = "Users")
+@Table(name = "USERS")
 public class UserPO {
 
   @Id
@@ -16,13 +16,13 @@ public class UserPO {
   @SequenceGenerator(name = "sequence", sequenceName = "APOLLO_ID_SEQ", allocationSize = 1)
   @Column(name = "ID")
   private long id;
-  @Column(name = "Username", nullable = false)
+  @Column(name = "USERNAME", nullable = false)
   private String username;
-  @Column(name = "Password", nullable = false)
+  @Column(name = "PASSWORD", nullable = false)
   private String password;
-  @Column(name = "Email", nullable = false)
+  @Column(name = "EMAIL", nullable = false)
   private String email;
-  @Column(name = "Enabled", nullable = false)
+  @Column(name = "ENABLED", nullable = false)
   private int enabled;
 
   public long getId() {

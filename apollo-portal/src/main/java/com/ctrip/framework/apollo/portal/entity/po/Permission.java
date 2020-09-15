@@ -7,20 +7,25 @@ import org.hibernate.annotations.Where;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.Index;
 import javax.persistence.Table;
 
 /**
  * @author Jason Song(song_s@ctrip.com)
  */
 @Entity
-@Table(name = "Permission")
-@SQLDelete(sql = "Update Permission set DELETED_FLAG = 1 where ID = ?")
+@Table(name = "PERMISSION",indexes = {
+        @Index(name = "IDX_PERM_PERMISSION_TYPE", columnList = "PERMISSION_TYPE"),
+        @Index(name = "IDX_PERM_TARGET_ID", columnList = "TARGET_ID"),
+        @Index(name = "IDX_PERM_CHANGE_LASTTIME", columnList = "DATACHANGE_LASTTIME"),
+})
+@SQLDelete(sql = "Update PERMISSION set DELETED_FLAG = 1 where ID = ?")
 @Where(clause = "DELETED_FLAG = 0")
 public class Permission extends BaseEntity {
-  @Column(name = "PermissionType", nullable = false)
+  @Column(name = "PERMISSION_TYPE", nullable = false)
   private String permissionType;
 
-  @Column(name = "TargetId", nullable = false)
+  @Column(name = "TARGET_ID", nullable = false)
   private String targetId;
 
   public String getPermissionType() {

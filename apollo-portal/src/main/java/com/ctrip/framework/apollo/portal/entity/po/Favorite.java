@@ -7,21 +7,26 @@ import org.hibernate.annotations.Where;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.Index;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "Favorite")
-@SQLDelete(sql = "Update Favorite set DELETED_FLAG = 1 where ID = ?")
+@Table(name = "FAVORITE",indexes = {
+        @Index(name = "IDX_FAVORITE_APP_ID", columnList = "APP_ID"),
+        @Index(name = "IDX_FAVORITE_USER_ID", columnList = "USER_ID"),
+        @Index(name = "IDX_FAVORITE_CHANGE_LASTTIME", columnList = "DATACHANGE_LASTTIME"),
+})
+@SQLDelete(sql = "Update FAVORITE set DELETED_FLAG = 1 where ID = ?")
 @Where(clause = "DELETED_FLAG = 0")
 public class Favorite extends BaseEntity {
 
-  @Column(name = "AppId", nullable = false)
+  @Column(name = "APP_ID", nullable = false)
   private String appId;
 
-  @Column(name = "UserId", nullable = false)
+  @Column(name = "USER_ID", nullable = false)
   private String userId;
 
-  @Column(name = "Position")
+  @Column(name = "POSITION")
   private long position;
 
   public String getAppId() {

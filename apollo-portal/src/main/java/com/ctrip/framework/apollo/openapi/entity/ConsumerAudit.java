@@ -10,7 +10,10 @@ import javax.persistence.*;
  * @author Jason Song(song_s@ctrip.com)
  */
 @Entity
-@Table(name = "ConsumerAudit")
+@Table(name = "CONSUMER_AUDIT",indexes = {
+        @Index(name = "IDX_CONAUDIT_CONSUMER_ID", columnList = "CONSUMER_ID"),
+        @Index(name = "IDX_CONAUDIT_CHANGE_LASTTIME", columnList = "DATACHANGE_LASTTIME"),
+})
 public class ConsumerAudit {
   @Id
   @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "sequence")
@@ -18,19 +21,19 @@ public class ConsumerAudit {
   @Column(name = "ID")
   private long id;
 
-  @Column(name = "ConsumerId", nullable = false)
+  @Column(name = "CONSUMER_ID", nullable = false)
   private long consumerId;
 
-  @Column(name = "Uri", nullable = false)
+  @Column(name = "URI", nullable = false)
   private String uri;
 
-  @Column(name = "Method", nullable = false)
+  @Column(name = "METHOD", nullable = false)
   private String method;
 
-  @Column(name = "DataChange_CreatedTime")
+  @Column(name = "DATACHANGE_CREATEDTIME")
   private Date dataChangeCreatedTime;
 
-  @Column(name = "DataChange_LastTime")
+  @Column(name = "DATACHANGE_LASTTIME")
   private Date dataChangeLastModifiedTime;
 
   @PrePersist
