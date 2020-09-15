@@ -7,24 +7,30 @@ import org.hibernate.annotations.Where;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.Index;
 import javax.persistence.Table;
 
 /**
  * @author Jason Song(song_s@ctrip.com)
  */
 @Entity
-@Table(name = "Cluster")
-@SQLDelete(sql = "Update Cluster set DELETED_FLAG = 1 where ID = ?")
+@Table(name = "APOLLO_CLUSTER",indexes = {
+        @Index(name = "IDX_CLUSTER_NAME", columnList = "NAME"),
+        @Index(name = "IDX_CLUSTER_APP_ID", columnList = "APP_ID"),
+        @Index(name = "IDX_CLUSTER_PARENT_ID", columnList = "PARENT_CLUSTER_ID"),
+        @Index(name = "IDX_CLUSTER_CHANGE_LASTTIME", columnList = "DATACHANGE_LASTTIME"),
+})
+@SQLDelete(sql = "Update APOLLO_CLUSTER set DELETED_FLAG = 1 where ID = ?")
 @Where(clause = "DELETED_FLAG = 0")
 public class Cluster extends BaseEntity implements Comparable<Cluster> {
 
-  @Column(name = "Name", nullable = false)
+  @Column(name = "NAME", nullable = false)
   private String name;
 
-  @Column(name = "AppId", nullable = false)
+  @Column(name = "APP_ID", nullable = false)
   private String appId;
 
-  @Column(name = "ParentClusterId", nullable = false)
+  @Column(name = "PARENT_CLUSTER_ID", nullable = false)
   private long parentClusterId;
 
   public String getAppId() {

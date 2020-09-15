@@ -7,26 +7,31 @@ import org.hibernate.annotations.Where;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.Index;
 import javax.persistence.Table;
 
 /**
  * @author Jason Song(song_s@ctrip.com)
  */
 @Entity
-@Table(name = "ServerConfig")
-@SQLDelete(sql = "Update ServerConfig set DELETED_FLAG = 1 where ID = ?")
+@Table(name = "SERVER_CONFIG",indexes = {
+        @Index(name = "IDX_SERCONFIG_CONFIG_KEY", columnList = "CONFIG_KEY"),
+        @Index(name = "IDX_SERCONFIG_CONFIG_VALUE", columnList = "CONFIG_VALUE"),
+        @Index(name = "IDX_SERCONFIG_CHANGE_LASTTIME", columnList = "DATACHANGE_LASTTIME"),
+})
+@SQLDelete(sql = "Update SERVER_CONFIG set DELETED_FLAG = 1 where ID = ?")
 @Where(clause = "DELETED_FLAG = 0")
 public class ServerConfig extends BaseEntity {
-  @Column(name = "Key", nullable = false)
+  @Column(name = "CONFIG_KEY", nullable = false)
   private String key;
 
-  @Column(name = "Cluster", nullable = false)
+  @Column(name = "CLUSTER_ADDRESS", nullable = false)
   private String cluster;
 
-  @Column(name = "Value", nullable = false)
+  @Column(name = "CONFIG_VALUE", nullable = false)
   private String value;
 
-  @Column(name = "Comment", nullable = false)
+  @Column(name = "CONFIG_COMMENT", nullable = false)
   private String comment;
 
   public String getKey() {

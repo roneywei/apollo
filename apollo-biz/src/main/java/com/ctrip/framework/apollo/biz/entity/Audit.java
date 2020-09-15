@@ -7,11 +7,14 @@ import org.hibernate.annotations.Where;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.Index;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "Audit")
-@SQLDelete(sql = "Update Audit set DELETED_FLAG = 1 where ID = ?")
+@Table(name = "APOLLO_AUDIT",indexes = {
+        @Index(name = "IDX_AUDIT_DATACHANGE_LASTTIME", columnList = "DATACHANGE_LASTTIME"),
+})
+@SQLDelete(sql = "Update APOLLO_AUDIT set DELETED_FLAG = 1 where ID = ?")
 @Where(clause = "DELETED_FLAG = 0")
 public class Audit extends BaseEntity {
 
@@ -19,16 +22,16 @@ public class Audit extends BaseEntity {
     INSERT, UPDATE, DELETE
   }
 
-  @Column(name = "EntityName", nullable = false)
+  @Column(name = "ENTITY_NAME", nullable = false)
   private String entityName;
 
-  @Column(name = "EntityId")
+  @Column(name = "ENTITY_ID")
   private Long entityId;
 
-  @Column(name = "OpName", nullable = false)
+  @Column(name = "OP_NAME", nullable = false)
   private String opName;
 
-  @Column(name = "Comment")
+  @Column(name = "COMMENT_MSG")
   private String comment;
 
   public String getComment() {

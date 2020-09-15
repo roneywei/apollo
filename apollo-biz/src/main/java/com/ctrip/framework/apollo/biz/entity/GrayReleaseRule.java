@@ -7,33 +7,40 @@ import org.hibernate.annotations.Where;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.Index;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "GrayReleaseRule")
-@SQLDelete(sql = "Update GrayReleaseRule set DELETED_FLAG = 1 where ID = ?")
+@Table(name = "GRAY_RELEASE_RULE",indexes = {
+        @Index(name = "IDX_GRARRULE_APP_ID", columnList = "APP_ID"),
+        @Index(name = "IDX_GRARRULE_CLUSTER_NAME", columnList = "CLUSTER_NAME"),
+        @Index(name = "IDX_GRARRULE_NAMESPACE_NAME", columnList = "NAMESPACE_NAME"),
+        @Index(name = "IDX_GRARRULE_RELEASE_ID", columnList = "RELEASE_ID"),
+        @Index(name = "IDX_GRARRULE_CHANGE_LASTTIME", columnList = "DATACHANGE_LASTTIME"),
+})
+@SQLDelete(sql = "Update GRAY_RELEASE_RULE set DELETED_FLAG = 1 where ID = ?")
 @Where(clause = "DELETED_FLAG = 0")
 public class GrayReleaseRule extends BaseEntity{
 
-  @Column(name = "appId", nullable = false)
+  @Column(name = "APP_ID", nullable = false)
   private String appId;
 
-  @Column(name = "ClusterName", nullable = false)
+  @Column(name = "CLUSTER_NAME", nullable = false)
   private String clusterName;
 
-  @Column(name = "NamespaceName", nullable = false)
+  @Column(name = "NAMESPACE_NAME", nullable = false)
   private String namespaceName;
 
-  @Column(name = "BranchName", nullable = false)
+  @Column(name = "BRANCH_NAME", nullable = false)
   private String branchName;
 
-  @Column(name = "Rules")
+  @Column(name = "RULES")
   private String rules;
 
-  @Column(name = "releaseId", nullable = false)
+  @Column(name = "RELEASE_ID", nullable = false)
   private Long releaseId;
 
-  @Column(name = "BranchStatus", nullable = false)
+  @Column(name = "BRANCH_STATUS", nullable = false)
   private int branchStatus;
 
   public String getAppId() {

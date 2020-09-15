@@ -15,12 +15,12 @@ import javax.persistence.Table;
  * @author Jason Song(song_s@ctrip.com)
  */
 @Entity
-@Table(name = "SERVER_CONFIG",indexes = {
-        @Index(name = "IDX_SERCONFIG_CONFIG_KEY", columnList = "CONFIG_KEY"),
-        @Index(name = "IDX_SERCONFIG_CONFIG_VALUE", columnList = "CONFIG_VALUE"),
-        @Index(name = "IDX_SERCONFIG_CHANGE_LASTTIME", columnList = "DATACHANGE_LASTTIME"),
+@Table(name = "PORTAL_SERVER_CONFIG",indexes = {
+        @Index(name = "IDX_POSERCONFIG_CONFIG_KEY", columnList = "CONFIG_KEY"),
+        @Index(name = "IDX_POSERCONFIG_CONFIG_VALUE", columnList = "CONFIG_VALUE"),
+        @Index(name = "IDX_POSERCONFIG_CHANGE_LASTTIME", columnList = "DATACHANGE_LASTTIME"),
 })
-@SQLDelete(sql = "Update SERVER_CONFIG set DELETED_FLAG = 1 where ID = ?")
+@SQLDelete(sql = "Update PORTAL_SERVER_CONFIG set DELETED_FLAG = 1 where ID = ?")
 @Where(clause = "DELETED_FLAG = 0")
 public class ServerConfig extends BaseEntity {
   @NotBlank(message = "ServerConfig.Key cannot be blank")

@@ -4,16 +4,20 @@ import com.ctrip.framework.apollo.common.entity.BaseEntity;
 
 import org.hibernate.annotations.Where;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 @Entity
-@Table(name = "NamespaceLock")
+@Table(name = "NAMESPACE_LOCK",
+        uniqueConstraints = {
+        @UniqueConstraint(name = "UK_NAMESPACE_LOCK_NAMESPACE_ID",columnNames = {"NAMESPACE_ID"})
+        },
+        indexes = {
+        @Index(name = "IDX_NAMESPLOCK_CHANGE_LASTTIME", columnList = "DATACHANGE_LASTTIME"),
+})
 @Where(clause = "DELETED_FLAG = 0")
 public class NamespaceLock extends BaseEntity{
 
-  @Column(name = "NamespaceId")
+  @Column(name = "NAMESPACE_ID")
   private long namespaceId;
 
   public long getNamespaceId() {

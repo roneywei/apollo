@@ -7,21 +7,27 @@ import org.hibernate.annotations.Where;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.Index;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "Namespace")
-@SQLDelete(sql = "Update Namespace set DELETED_FLAG = 1 where ID = ?")
+@Table(name = "NAMESPACE",indexes = {
+        @Index(name = "IDX_NAMESPACE_APP_ID", columnList = "APP_ID"),
+        @Index(name = "IDX_NAMESPACE_CLUSTER_NAME", columnList = "CLUSTER_NAME"),
+        @Index(name = "IDX_NAMESPACE_NAMESPACE_NAME", columnList = "NAMESPACE_NAME"),
+        @Index(name = "IDX_NAMESPACE_CHANGE_LASTTIME", columnList = "DATACHANGE_LASTTIME"),
+})
+@SQLDelete(sql = "Update NAMESPACE set DELETED_FLAG = 1 where ID = ?")
 @Where(clause = "DELETED_FLAG = 0")
 public class Namespace extends BaseEntity {
 
-  @Column(name = "appId", nullable = false)
+  @Column(name = "APP_ID", nullable = false)
   private String appId;
 
-  @Column(name = "ClusterName", nullable = false)
+  @Column(name = "CLUSTER_NAME", nullable = false)
   private String clusterName;
 
-  @Column(name = "NamespaceName", nullable = false)
+  @Column(name = "NAMESPACE_NAME", nullable = false)
   private String namespaceName;
 
   public Namespace(){

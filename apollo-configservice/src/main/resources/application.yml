@@ -2,7 +2,12 @@ spring:
   application:
     name: apollo-configservice
   profiles:
-    active: ${apollo_profile}
+    active: github,dev
+  jpa:
+    database-platform: org.hibernate.dialect.OracleDialect
+    hibernate:
+      ddl-auto: update
+    show-sql: true
   datasource:
     driver-class-name: oracle.jdbc.driver.OracleDriver
     password: tpmall

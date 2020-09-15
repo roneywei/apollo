@@ -5,23 +5,25 @@ import com.ctrip.framework.apollo.common.entity.BaseEntity;
 import org.hibernate.annotations.SQLDelete;
 import org.hibernate.annotations.Where;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 @Entity
-@Table(name = "Privilege")
-@SQLDelete(sql = "Update Privilege set DELETED_FLAG = 1 where ID = ?")
+@Table(name = "PRIVILEGE",
+        indexes = {
+                @Index(name = "IDX_PRIVILEGE_NAMESPACE_ID", columnList = "NAMESPACE_ID"),
+                @Index(name = "IDX_PRIVILEGE_CHANGE_LASTTIME", columnList = "DATACHANGE_LASTTIME"),
+        })
+@SQLDelete(sql = "Update PRIVILEGE set DELETED_FLAG = 1 where ID = ?")
 @Where(clause = "DELETED_FLAG = 0")
 public class Privilege extends BaseEntity {
 
-  @Column(name = "Name", nullable = false)
+  @Column(name = "NAME", nullable = false)
   private String name;
 
-  @Column(name = "PrivilType", nullable = false)
+  @Column(name = "PRIVIL_TYPE", nullable = false)
   private String privilType;
 
-  @Column(name = "NamespaceId")
+  @Column(name = "NAMESPACE_ID")
   private long namespaceId;
 
   public String getName() {

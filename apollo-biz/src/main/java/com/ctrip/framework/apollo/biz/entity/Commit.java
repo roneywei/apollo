@@ -5,31 +5,33 @@ import com.ctrip.framework.apollo.common.entity.BaseEntity;
 import org.hibernate.annotations.SQLDelete;
 import org.hibernate.annotations.Where;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Lob;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 @Entity
-@Table(name = "Commit")
-@SQLDelete(sql = "Update Commit set DELETED_FLAG = 1 where ID = ?")
+@Table(name = "APOLLO_COMMIT",indexes = {
+        @Index(name = "IDX_COMMIT_APP_ID", columnList = "APP_ID"),
+        @Index(name = "IDX_COMMIT_CLUSTER_NAME", columnList = "CLUSTER_NAME"),
+        @Index(name = "IDX_COMMIT_NAMESPACE_NAME", columnList = "NAMESPACE_NAME"),
+        @Index(name = "IDX_COMMIT_CHANGE_LASTTIME", columnList = "DATACHANGE_LASTTIME"),
+})
+@SQLDelete(sql = "Update APOLLO_COMMIT set DELETED_FLAG = 1 where ID = ?")
 @Where(clause = "DELETED_FLAG = 0")
 public class Commit extends BaseEntity {
 
   @Lob
-  @Column(name = "ChangeSets", nullable = false)
+  @Column(name = "CHANGE_SETS", nullable = false)
   private String changeSets;
 
-  @Column(name = "AppId", nullable = false)
+  @Column(name = "APP_ID", nullable = false)
   private String appId;
 
-  @Column(name = "ClusterName", nullable = false)
+  @Column(name = "CLUSTER_NAME", nullable = false)
   private String clusterName;
 
-  @Column(name = "NamespaceName", nullable = false)
+  @Column(name = "NAMESPACE_NAME", nullable = false)
   private String namespaceName;
 
-  @Column(name = "Comment")
+  @Column(name = "COMMENT_MSG")
   private String comment;
 
   public String getChangeSets() {

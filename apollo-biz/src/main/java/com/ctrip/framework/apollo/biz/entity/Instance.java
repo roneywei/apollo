@@ -10,7 +10,13 @@ import javax.persistence.*;
  * @author Jason Song(song_s@ctrip.com)
  */
 @Entity
-@Table(name = "Instance")
+@Table(name = "INSTANCE",uniqueConstraints = {
+        @UniqueConstraint(name="UK_INSTANCE_APP_ID_CN_DC_IP",columnNames = {"APP_ID","CLUSTER_NAME","DATA_CENTER","IP"})
+},
+indexes = {
+        @Index(name = "IDX_INSTANCE_IP", columnList = "IP"),
+        @Index(name = "IDX_INSTANCE_CHANGE_LASTTIME", columnList = "DATACHANGE_LASTTIME"),
+})
 public class Instance {
   @Id
   @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "sequence")
@@ -18,22 +24,22 @@ public class Instance {
   @Column(name = "ID")
   private long id;
 
-  @Column(name = "AppId", nullable = false)
+  @Column(name = "APP_ID", nullable = false)
   private String appId;
 
-  @Column(name = "ClusterName", nullable = false)
+  @Column(name = "CLUSTER_NAME", nullable = false)
   private String clusterName;
 
-  @Column(name = "DataCenter", nullable = false)
+  @Column(name = "DATA_CENTER", nullable = false)
   private String dataCenter;
 
-  @Column(name = "Ip", nullable = false)
+  @Column(name = "IP", nullable = false)
   private String ip;
 
-  @Column(name = "DataChange_CreatedTime", nullable = false)
+  @Column(name = "DATACHANGE_CREATEDTIME", nullable = false)
   private Date dataChangeCreatedTime;
 
-  @Column(name = "DataChange_LastTime")
+  @Column(name = "DATACHANGE_LASTTIME")
   private Date dataChangeLastModifiedTime;
 
   @PrePersist

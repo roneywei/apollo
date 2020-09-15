@@ -10,7 +10,16 @@ import javax.persistence.*;
  * @author Jason Song(song_s@ctrip.com)
  */
 @Entity
-@Table(name = "InstanceConfig")
+@Table(name = "INSTANCE_CONFIG",uniqueConstraints = {
+        @UniqueConstraint(name="UK_INSCONFIG_APP_ID_NAMESPACE",columnNames = {"INSTANCE_ID","CONFIG_APP_ID","CONFIG_NAMESPACE_NAME"})
+},
+        indexes = {
+                @Index(name = "IDX_INSCONFIG_CONFIG_APP_ID", columnList = "CONFIG_APP_ID"),
+                @Index(name = "IDX_INSCONFIG_CLUSTER_NAME", columnList = "CONFIG_CLUSTER_NAME"),
+                @Index(name = "IDX_INSCONFIG_NAMESPACE_NAME", columnList = "CONFIG_NAMESPACE_NAME"),
+                @Index(name = "IDX_INSCONFIG_RELEASE_KEY", columnList = "RELEASE_KEY"),
+                @Index(name = "IDX_INSCONFIG_CHANGE_LASTTIME", columnList = "DATACHANGE_LASTTIME"),
+        })
 public class InstanceConfig {
   @Id
   @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "sequence")
@@ -18,28 +27,28 @@ public class InstanceConfig {
   @Column(name = "ID")
   private long id;
 
-  @Column(name = "InstanceId")
+  @Column(name = "INSTANCE_ID")
   private long instanceId;
 
-  @Column(name = "ConfigAppId", nullable = false)
+  @Column(name = "CONFIG_APP_ID", nullable = false)
   private String configAppId;
 
-  @Column(name = "ConfigClusterName", nullable = false)
+  @Column(name = "CONFIG_CLUSTER_NAME", nullable = false)
   private String configClusterName;
 
-  @Column(name = "ConfigNamespaceName", nullable = false)
+  @Column(name = "CONFIG_NAMESPACE_NAME", nullable = false)
   private String configNamespaceName;
 
-  @Column(name = "ReleaseKey", nullable = false)
+  @Column(name = "RELEASE_KEY", nullable = false)
   private String releaseKey;
 
-  @Column(name = "ReleaseDeliveryTime", nullable = false)
+  @Column(name = "RELEASE_DELIVERY_TIME", nullable = false)
   private Date releaseDeliveryTime;
 
-  @Column(name = "DataChange_CreatedTime", nullable = false)
+  @Column(name = "DATACHANGE_CREATEDTIME", nullable = false)
   private Date dataChangeCreatedTime;
 
-  @Column(name = "DataChange_LastTime")
+  @Column(name = "DATACHANGE_LASTTIME")
   private Date dataChangeLastModifiedTime;
 
   @PrePersist

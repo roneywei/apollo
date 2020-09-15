@@ -6,21 +6,25 @@ import org.hibernate.annotations.Where;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.Index;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "AccessKey")
-@SQLDelete(sql = "Update AccessKey set DELETED_FLAG = 1 where ID = ?")
+@Table(name = "ACCESS_KEY",indexes = {
+        @Index(name = "IDX_ACCESS_KEY_APP_ID", columnList = "APP_ID"),
+        @Index(name = "IDX_ACCKEY_CHANGE_LASTTIME", columnList = "DATACHANGE_LASTTIME"),
+})
+@SQLDelete(sql = "Update ACCESS_KEY set DELETED_FLAG = 1 where ID = ?")
 @Where(clause = "DELETED_FLAG = 0")
 public class AccessKey extends BaseEntity {
 
-  @Column(name = "appId", nullable = false)
+  @Column(name = "APP_ID", nullable = false)
   private String appId;
 
-  @Column(name = "Secret", nullable = false)
+  @Column(name = "SECRET", nullable = false)
   private String secret;
 
-  @Column(name = "isEnabled", columnDefinition = "Number(1) default 0 ")
+  @Column(name = "ENABLED_FLAG", columnDefinition = "Number(1) default 0 ")
   private boolean enabled = false;
 
   public String getAppId() {

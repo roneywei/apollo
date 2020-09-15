@@ -7,38 +7,46 @@ import org.hibernate.annotations.Where;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.Index;
 import javax.persistence.Table;
 
 /**
  * @author Jason Song(song_s@ctrip.com)
  */
 @Entity
-@Table(name = "ReleaseHistory")
-@SQLDelete(sql = "Update ReleaseHistory set DELETED_FLAG = 1 where ID = ?")
+@Table(name = "RELEASE_HISTORY",indexes = {
+        @Index(name = "IDX_RELEASEHI_APP_ID", columnList = "APP_ID"),
+        @Index(name = "IDX_RELEASEHI_CLUSTER_NAME", columnList = "CLUSTER_NAME"),
+        @Index(name = "IDX_RELEASEHI_NAMESPACE_NAME", columnList = "NAMESPACE_NAME"),
+        @Index(name = "IDX_RELEASEHI_BRANCH_NAME", columnList = "BRANCH_NAME"),
+        @Index(name = "IDX_RELEASEHI_RELEASE_ID", columnList = "RELEASE_ID"),
+        @Index(name = "IDX_RELEASEHI_CHANGE_LASTTIME", columnList = "DATACHANGE_LASTTIME"),
+})
+@SQLDelete(sql = "Update RELEASE_HISTORY set DELETED_FLAG = 1 where ID = ?")
 @Where(clause = "DELETED_FLAG = 0")
 public class ReleaseHistory extends BaseEntity {
-  @Column(name = "AppId", nullable = false)
+  @Column(name = "APP_ID", nullable = false)
   private String appId;
 
-  @Column(name = "ClusterName", nullable = false)
+  @Column(name = "CLUSTER_NAME", nullable = false)
   private String clusterName;
 
-  @Column(name = "NamespaceName", nullable = false)
+  @Column(name = "NAMESPACE_NAME", nullable = false)
   private String namespaceName;
 
-  @Column(name = "BranchName", nullable = false)
+  @Column(name = "BRANCH_NAME", nullable = false)
   private String branchName;
 
-  @Column(name = "ReleaseId")
+  @Column(name = "RELEASE_ID")
   private long releaseId;
 
-  @Column(name = "PreviousReleaseId")
+  @Column(name = "PREVIOUS_RELEASE_ID")
   private long previousReleaseId;
 
-  @Column(name = "Operation")
+  @Column(name = "OPERATION")
   private int operation;
 
-  @Column(name = "OperationContext", nullable = false)
+  @Column(name = "OPERATION_CONTEXT", nullable = false)
   private String operationContext;
 
   public String getAppId() {

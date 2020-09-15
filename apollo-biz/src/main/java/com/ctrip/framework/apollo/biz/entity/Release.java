@@ -5,42 +5,45 @@ import com.ctrip.framework.apollo.common.entity.BaseEntity;
 import org.hibernate.annotations.SQLDelete;
 import org.hibernate.annotations.Where;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Lob;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 /**
  * @author Jason Song(song_s@ctrip.com)
  */
 @Entity
-@Table(name = "Release")
-@SQLDelete(sql = "Update Release set DELETED_FLAG = 1 where ID = ?")
+@Table(name = "RELEASE",indexes = {
+        @Index(name = "IDX_RELEASE_APP_ID", columnList = "APP_ID"),
+        @Index(name = "IDX_RELEASE_CLUSTER_NAME", columnList = "CLUSTER_NAME"),
+        @Index(name = "IDX_RELEASE_NAMESPACE_NAME", columnList = "NAMESPACE_NAME"),
+        @Index(name = "IDX_RELEASE_RELEASE_KEY", columnList = "RELEASE_KEY"),
+        @Index(name = "IDX_RELEASE_CHANGE_LASTTIME", columnList = "DATACHANGE_LASTTIME"),
+})
+@SQLDelete(sql = "Update RELEASE set DELETED_FLAG = 1 where ID = ?")
 @Where(clause = "DELETED_FLAG = 0")
 public class Release extends BaseEntity {
-  @Column(name = "ReleaseKey", nullable = false)
+  @Column(name = "RELEASE_KEY", nullable = false)
   private String releaseKey;
 
-  @Column(name = "Name", nullable = false)
+  @Column(name = "NAME", nullable = false)
   private String name;
 
-  @Column(name = "AppId", nullable = false)
+  @Column(name = "APP_ID", nullable = false)
   private String appId;
 
-  @Column(name = "ClusterName", nullable = false)
+  @Column(name = "CLUSTER_NAME", nullable = false)
   private String clusterName;
 
-  @Column(name = "NamespaceName", nullable = false)
+  @Column(name = "NAMESPACE_NAME", nullable = false)
   private String namespaceName;
 
-  @Column(name = "Configurations", nullable = false)
+  @Column(name = "CONFIGURATIONS", nullable = false)
   @Lob
   private String configurations;
 
-  @Column(name = "Comment", nullable = false)
+  @Column(name = "COMMENT_MSG", nullable = false)
   private String comment;
 
-  @Column(name = "IsAbandoned", columnDefinition = "Number(1) default 0 ")
+  @Column(name = "ABANDONED_FLAG", columnDefinition = "Number(1) default 0 ")
   private boolean isAbandoned = false;
 
   public String getReleaseKey() {

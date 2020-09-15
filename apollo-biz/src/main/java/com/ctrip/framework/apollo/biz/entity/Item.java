@@ -5,31 +5,31 @@ import com.ctrip.framework.apollo.common.entity.BaseEntity;
 import org.hibernate.annotations.SQLDelete;
 import org.hibernate.annotations.Where;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Lob;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 @Entity
-@Table(name = "Item")
-@SQLDelete(sql = "Update Item set DELETED_FLAG = 1 where ID = ?")
+@Table(name = "ITEM",indexes = {
+        @Index(name = "IDX_ITEM_NAMESPACE_ID", columnList = "NAMESPACE_ID"),
+        @Index(name = "IDX_ITEM_CHANGE_LASTTIME", columnList = "DATACHANGE_LASTTIME"),
+})
+@SQLDelete(sql = "Update ITEM set DELETED_FLAG = 1 where ID = ?")
 @Where(clause = "DELETED_FLAG = 0")
 public class Item extends BaseEntity {
 
-  @Column(name = "NamespaceId", nullable = false)
+  @Column(name = "NAMESPACE_ID", nullable = false)
   private long namespaceId;
 
-  @Column(name = "key", nullable = false)
+  @Column(name = "ITEM_KEY", nullable = false)
   private String key;
 
-  @Column(name = "value")
+  @Column(name = "ITEM_VALUE")
   @Lob
   private String value;
 
-  @Column(name = "comment")
+  @Column(name = "COMMENT_MSG")
   private String comment;
 
-  @Column(name = "LineNum")
+  @Column(name = "LINE_NUM")
   private Integer lineNum;
 
   public String getComment() {
