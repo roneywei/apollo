@@ -15,7 +15,7 @@ import javax.annotation.Resource;
  * @author Roney
  * @date 2020-09-15 14:31
  */
-//@Component
+@Component
 public class InitDb {
 
     @Resource

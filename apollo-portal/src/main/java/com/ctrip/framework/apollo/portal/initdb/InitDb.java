@@ -56,8 +56,8 @@ public class InitDb {
         serverConfigRepository.save(serverConfig1);
         ServerConfig serverConfig2=new ServerConfig();
         serverConfig2.setKey("superAdmin");
-        serverConfig2.setValue("'apollo'");
-        serverConfig2.setComment("'Portal超级管理员'");
+        serverConfig2.setValue("apollo");
+        serverConfig2.setComment("Portal超级管理员");
         serverConfigRepository.save(serverConfig2);
         ServerConfig serverConfig3=new ServerConfig();
         serverConfig3.setKey("api.readTimeout");

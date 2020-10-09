@@ -4,15 +4,11 @@ package com.ctrip.framework.apollo.common.entity;
 import com.ctrip.framework.apollo.common.utils.InputValidator;
 import com.ctrip.framework.apollo.core.enums.ConfigFileFormat;
 
-import javax.persistence.Index;
+import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Pattern;
 import org.hibernate.annotations.SQLDelete;
 import org.hibernate.annotations.Where;
-
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Table;
 
 @Entity
 @Table(name = "APP_NAMESPACE",indexes = {
@@ -23,6 +19,12 @@ import javax.persistence.Table;
 @SQLDelete(sql = "Update APP_NAMESPACE set DELETED_FLAG = 1 where ID = ?")
 @Where(clause = "DELETED_FLAG = 0")
 public class AppNamespace extends BaseEntity {
+
+  @Id
+  @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "sequence")
+  @SequenceGenerator(name = "sequence", sequenceName = "APOLLO_APP_NAMESPACE_ID_SEQ", allocationSize = 1)
+  @Column(name = "ID")
+  private long id;
 
   @NotBlank(message = "AppNamespace Name cannot be blank")
   @Pattern(

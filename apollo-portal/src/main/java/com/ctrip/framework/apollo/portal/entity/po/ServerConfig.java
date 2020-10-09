@@ -18,7 +18,7 @@ import javax.persistence.Table;
 @Table(name = "PORTAL_SERVER_CONFIG",indexes = {
         @Index(name = "IDX_POSERCONFIG_CONFIG_KEY", columnList = "CONFIG_KEY"),
         @Index(name = "IDX_POSERCONFIG_CONFIG_VALUE", columnList = "CONFIG_VALUE"),
-        @Index(name = "IDX_POSERCONFIG_CHANGE_LASTTIME", columnList = "DATACHANGE_LASTTIME"),
+        @Index(name = "IDX_POSERCONFIG_CHALASTTIME", columnList = "DATACHANGE_LASTTIME"),
 })
 @SQLDelete(sql = "Update PORTAL_SERVER_CONFIG set DELETED_FLAG = 1 where ID = ?")
 @Where(clause = "DELETED_FLAG = 0")
