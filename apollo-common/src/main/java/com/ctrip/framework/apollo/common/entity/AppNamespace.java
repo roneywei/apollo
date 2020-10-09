@@ -20,12 +20,6 @@ import org.hibernate.annotations.Where;
 @Where(clause = "DELETED_FLAG = 0")
 public class AppNamespace extends BaseEntity {
 
-  @Id
-  @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "sequence")
-  @SequenceGenerator(name = "sequence", sequenceName = "APOLLO_APP_NAMESPACE_ID_SEQ", allocationSize = 1)
-  @Column(name = "ID")
-  private long id;
-
   @NotBlank(message = "AppNamespace Name cannot be blank")
   @Pattern(
       regexp = InputValidator.CLUSTER_NAMESPACE_VALIDATOR,
