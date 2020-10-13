@@ -232,23 +232,23 @@ public class AuthConfiguration {
         DataSource datasource) throws Exception {
       JdbcUserDetailsManager jdbcUserDetailsManager = auth.jdbcAuthentication()
           .passwordEncoder(new BCryptPasswordEncoder()).dataSource(datasource)
-          .usersByUsernameQuery("SELECT USERNAME,PASSWORD,ENABLED FROM USERS WHERE USERNAME = ?")
+          .usersByUsernameQuery("SELECT USERNAME,PASSWORD,ENABLED FROM PORTAL_USERS WHERE USERNAME = ?")
           .authoritiesByUsernameQuery(
-              "SELECT USERNAME,AUTHORITY FROM AUTHORITIES WHERE USERNAME = ?")
+              "SELECT USERNAME,AUTHORITY FROM PORTAL_AUTHORITIES WHERE USERNAME = ?")
           .getUserDetailsService();
 
-      jdbcUserDetailsManager.setUserExistsSql("SELECT USERNAME FROM USERS WHERE USERNAME = ?");
+      jdbcUserDetailsManager.setUserExistsSql("SELECT USERNAME FROM PORTAL_USERS WHERE USERNAME = ?");
       jdbcUserDetailsManager
-          .setCreateUserSql("INSERT INTO USERS (USERNAME, PASSWORD, ENABLED) VALUES (?,?,?)");
+          .setCreateUserSql("INSERT INTO PORTAL_USERS (USERNAME, PASSWORD, ENABLED) VALUES (?,?,?)");
       jdbcUserDetailsManager
-          .setUpdateUserSql("UPDATE USERS SET PASSWORD = ?, ENABLED = ? WHERE ID = (SELECT U.ID FROM (SELECT ID FROM USERS WHERE USERNAME = ?) AS U)");
-      jdbcUserDetailsManager.setDeleteUserSql("DELETE FROM USERS WHERE ID = (SELECT U.ID FROM (SELECT ID FROM USERS WHERE USERNAME = ?) AS U)");
+          .setUpdateUserSql("UPDATE PORTAL_USERS SET PASSWORD = ?, ENABLED = ? WHERE ID = (SELECT U.ID FROM (SELECT ID FROM PORTAL_USERS WHERE USERNAME = ?) AS U)");
+      jdbcUserDetailsManager.setDeleteUserSql("DELETE FROM PORTAL_USERS WHERE ID = (SELECT U.ID FROM (SELECT ID FROM PORTAL_USERS WHERE USERNAME = ?) AS U)");
       jdbcUserDetailsManager
-          .setCreateAuthoritySql("INSERT INTO AUTHORITIES (USERNAME, AUTHORITY) VALUES (?,?)");
+          .setCreateAuthoritySql("INSERT INTO PORTAL_AUTHORITIES (USERNAME, AUTHORITY) VALUES (?,?)");
       jdbcUserDetailsManager
-          .setDeleteUserAuthoritiesSql("DELETE FROM AUTHORITIES WHERE ID IN (SELECT A.ID FROM (SELECT ID FROM AUTHORITIES WHERE USERNAME = ?) AS A)");
+          .setDeleteUserAuthoritiesSql("DELETE FROM PORTAL_AUTHORITIES WHERE ID IN (SELECT A.ID FROM (SELECT ID FROM PORTAL_AUTHORITIES WHERE USERNAME = ?) AS A)");
       jdbcUserDetailsManager
-          .setChangePasswordSql("UPDATE USERS SET PASSWORD = ? WHERE ID = (SELECT U.ID FROM (SELECT ID FROM USERS WHERE USERNAME = ?) AS U)");
+          .setChangePasswordSql("UPDATE PORTAL_USERS SET PASSWORD = ? WHERE ID = (SELECT U.ID FROM (SELECT ID FROM PORTAL_USERS WHERE USERNAME = ?) AS U)");
 
       return jdbcUserDetailsManager;
     }
