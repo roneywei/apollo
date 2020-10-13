@@ -1,7 +1,7 @@
 package com.ctrip.framework.apollo.portal.repository;
 
-import com.ctrip.framework.apollo.common.entity.App;
 
+import com.ctrip.framework.apollo.portal.entity.po.PortalApp;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.Modifying;
@@ -12,17 +12,17 @@ import java.util.List;
 import java.util.Set;
 
 
-public interface AppRepository extends PagingAndSortingRepository<App, Long> {
+public interface AppRepository extends PagingAndSortingRepository<PortalApp, Long> {
 
-  App findByAppId(String appId);
+  PortalApp findByAppId(String appId);
 
-  List<App> findByOwnerName(String ownerName, Pageable page);
+  List<PortalApp> findByOwnerName(String ownerName, Pageable page);
 
-  List<App> findByAppIdIn(Set<String> appIds);
+  List<PortalApp> findByAppIdIn(Set<String> appIds);
 
-  List<App> findByAppIdIn(Set<String> appIds, Pageable pageable);
+  List<PortalApp> findByAppIdIn(Set<String> appIds, Pageable pageable);
 
-  Page<App> findByAppIdContainingOrNameContaining(String appId, String name, Pageable pageable);
+  Page<PortalApp> findByAppIdContainingOrNameContaining(String appId, String name, Pageable pageable);
 
   @Modifying
   @Query("UPDATE PortalApp SET IsDeleted=1,DataChange_LastModifiedBy = ?2 WHERE AppId=?1")

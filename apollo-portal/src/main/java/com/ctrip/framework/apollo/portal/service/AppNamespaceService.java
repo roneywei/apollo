@@ -3,9 +3,12 @@ package com.ctrip.framework.apollo.portal.service;
 import com.ctrip.framework.apollo.common.entity.App;
 import com.ctrip.framework.apollo.common.entity.AppNamespace;
 import com.ctrip.framework.apollo.common.exception.BadRequestException;
+import com.ctrip.framework.apollo.common.utils.BeanUtils;
 import com.ctrip.framework.apollo.core.ConfigConsts;
 import com.ctrip.framework.apollo.core.enums.ConfigFileFormat;
 import com.ctrip.framework.apollo.core.utils.StringUtils;
+import com.ctrip.framework.apollo.portal.entity.po.PortalApp;
+import com.ctrip.framework.apollo.portal.entity.po.PortalAppNamespace;
 import com.ctrip.framework.apollo.portal.repository.AppNamespaceRepository;
 import com.ctrip.framework.apollo.portal.spi.UserInfoHolder;
 import com.google.common.base.Joiner;
@@ -48,29 +51,33 @@ public class AppNamespaceService {
    * 公共的app ns,能被其它项目关联到的app ns
    */
   public List<AppNamespace> findPublicAppNamespaces() {
-    return appNamespaceRepository.findByIsPublicTrue();
+    List<PortalAppNamespace> portalAppNamespaces = appNamespaceRepository.findByIsPublicTrue();
+    return BeanUtils.batchTransform(AppNamespace.class,portalAppNamespaces);
   }
 
   public AppNamespace findPublicAppNamespace(String namespaceName) {
-    List<AppNamespace> appNamespaces = appNamespaceRepository.findByNameAndIsPublic(namespaceName, true);
+    List<PortalAppNamespace> portalAppNamespaces = appNamespaceRepository.findByNameAndIsPublic(namespaceName, true);
 
-    if (CollectionUtils.isEmpty(appNamespaces)) {
+    if (CollectionUtils.isEmpty(portalAppNamespaces)) {
       return null;
     }
 
-    return appNamespaces.get(0);
+    return BeanUtils.batchTransform(AppNamespace.class,portalAppNamespaces).get(0);
   }
 
   private List<AppNamespace> findAllPrivateAppNamespaces(String namespaceName) {
-    return appNamespaceRepository.findByNameAndIsPublic(namespaceName, false);
+    List<PortalAppNamespace> portalAppNamespaces = appNamespaceRepository.findByNameAndIsPublic(namespaceName, false);
+    return BeanUtils.batchTransform(AppNamespace.class,portalAppNamespaces);
   }
 
   public AppNamespace findByAppIdAndName(String appId, String namespaceName) {
-    return appNamespaceRepository.findByAppIdAndName(appId, namespaceName);
+    PortalAppNamespace portalAppNamespace = appNamespaceRepository.findByAppIdAndName(appId, namespaceName);
+    return BeanUtils.transform(AppNamespace.class,portalAppNamespace);
   }
 
   public List<AppNamespace> findByAppId(String appId) {
-    return appNamespaceRepository.findByAppId(appId);
+    List<PortalAppNamespace> portalAppNamespaces = appNamespaceRepository.findByAppId(appId);
+    return BeanUtils.batchTransform(AppNamespace.class,portalAppNamespaces);
   }
 
   @Transactional
@@ -87,8 +94,8 @@ public class AppNamespaceService {
     String userId = userInfoHolder.getUser().getUserId();
     appNs.setDataChangeCreatedBy(userId);
     appNs.setDataChangeLastModifiedBy(userId);
-
-    appNamespaceRepository.save(appNs);
+    PortalAppNamespace portalAppNamespace = BeanUtils.transform(PortalAppNamespace.class,appNs);
+    appNamespaceRepository.save(portalAppNamespace);
   }
 
   public boolean isAppNamespaceNameUnique(String appId, String namespaceName) {
@@ -151,13 +158,13 @@ public class AppNamespaceService {
       // should not have the same with public app namespace
       checkPublicAppNamespaceGlobalUniqueness(appNamespace);
     }
-
-    AppNamespace createdAppNamespace = appNamespaceRepository.save(appNamespace);
+    PortalAppNamespace portalAppNamespace = BeanUtils.transform(PortalAppNamespace.class,appNamespace);
+    PortalAppNamespace createdAppNamespace = appNamespaceRepository.save(portalAppNamespace);
 
     roleInitializationService.initNamespaceRoles(appNamespace.getAppId(), appNamespace.getName(), operator);
     roleInitializationService.initNamespaceEnvRoles(appNamespace.getAppId(), appNamespace.getName(), operator);
 
-    return createdAppNamespace;
+    return BeanUtils.transform(AppNamespace.class,createdAppNamespace);
   }
 
   private void checkAppNamespaceGlobalUniqueness(AppNamespace appNamespace) {
@@ -190,7 +197,7 @@ public class AppNamespaceService {
 
   @Transactional
   public AppNamespace deleteAppNamespace(String appId, String namespaceName) {
-    AppNamespace appNamespace = appNamespaceRepository.findByAppIdAndName(appId, namespaceName);
+    PortalAppNamespace appNamespace = appNamespaceRepository.findByAppIdAndName(appId, namespaceName);
     if (appNamespace == null) {
       throw new BadRequestException(
           String.format("AppNamespace not exists. AppId = %s, NamespaceName = %s", appId, namespaceName));
@@ -207,7 +214,7 @@ public class AppNamespaceService {
     // delete Permission and Role related data
     rolePermissionService.deleteRolePermissionsByAppIdAndNamespace(appId, namespaceName, operator);
 
-    return appNamespace;
+    return BeanUtils.transform(AppNamespace.class,appNamespace);
   }
 
   public void batchDeleteByAppId(String appId, String operator) {

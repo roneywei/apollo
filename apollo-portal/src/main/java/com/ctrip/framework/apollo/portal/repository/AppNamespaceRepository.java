@@ -2,21 +2,21 @@ package com.ctrip.framework.apollo.portal.repository;
 
 import com.ctrip.framework.apollo.common.entity.AppNamespace;
 import java.util.List;
+
+import com.ctrip.framework.apollo.portal.entity.po.PortalAppNamespace;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.PagingAndSortingRepository;
 
-public interface AppNamespaceRepository extends PagingAndSortingRepository<AppNamespace, Long> {
+public interface AppNamespaceRepository extends PagingAndSortingRepository<PortalAppNamespace, Long> {
 
-  AppNamespace findByAppIdAndName(String appId, String namespaceName);
+  PortalAppNamespace findByAppIdAndName(String appId, String namespaceName);
 
-  AppNamespace findByName(String namespaceName);
+  List<PortalAppNamespace> findByNameAndIsPublic(String namespaceName, boolean isPublic);
 
-  List<AppNamespace> findByNameAndIsPublic(String namespaceName, boolean isPublic);
+  List<PortalAppNamespace> findByIsPublicTrue();
 
-  List<AppNamespace> findByIsPublicTrue();
-
-  List<AppNamespace> findByAppId(String appId);
+  List<PortalAppNamespace> findByAppId(String appId);
 
   @Modifying
   @Query("UPDATE PortalAppNamespace SET IsDeleted=1,DataChange_LastModifiedBy=?2 WHERE AppId=?1")

@@ -5,6 +5,7 @@ import com.ctrip.framework.apollo.common.dto.PageDTO;
 import com.ctrip.framework.apollo.common.entity.App;
 import com.ctrip.framework.apollo.common.exception.BadRequestException;
 import com.ctrip.framework.apollo.common.utils.BeanUtils;
+import com.ctrip.framework.apollo.portal.entity.po.PortalApp;
 import com.ctrip.framework.apollo.portal.environment.Env;
 import com.ctrip.framework.apollo.portal.api.AdminServiceAPI;
 import com.ctrip.framework.apollo.portal.constant.TracerEventType;
@@ -60,39 +61,44 @@ public class AppService {
 
 
   public List<App> findAll() {
-    Iterable<App> apps = appRepository.findAll();
+    Iterable<PortalApp> apps = appRepository.findAll();
     if (apps == null) {
       return Collections.emptyList();
     }
-    return Lists.newArrayList((apps));
+    List<App> appList = BeanUtils.batchTransform(App.class,Lists.newArrayList(apps));
+    return appList;
   }
 
   public PageDTO<App> findAll(Pageable pageable) {
-    Page<App> apps = appRepository.findAll(pageable);
+    Page<PortalApp> apps = appRepository.findAll(pageable);
 
-    return new PageDTO<>(apps.getContent(), pageable, apps.getTotalElements());
+    return new PageDTO<>(BeanUtils.batchTransform(App.class,Lists.newArrayList(apps.getContent())), pageable, apps.getTotalElements());
   }
 
   public PageDTO<App> searchByAppIdOrAppName(String query, Pageable pageable) {
-    Page<App> apps = appRepository.findByAppIdContainingOrNameContaining(query, query, pageable);
+    Page<PortalApp> apps = appRepository.findByAppIdContainingOrNameContaining(query, query, pageable);
 
-    return new PageDTO<>(apps.getContent(), pageable, apps.getTotalElements());
+    return new PageDTO<>(BeanUtils.batchTransform(App.class,Lists.newArrayList(apps.getContent())), pageable, apps.getTotalElements());
   }
 
   public List<App> findByAppIds(Set<String> appIds) {
-    return appRepository.findByAppIdIn(appIds);
+    List<PortalApp> portalApps = appRepository.findByAppIdIn(appIds);
+    return BeanUtils.batchTransform(App.class,portalApps);
   }
 
   public List<App> findByAppIds(Set<String> appIds, Pageable pageable) {
-    return appRepository.findByAppIdIn(appIds, pageable);
+    List<PortalApp> portalApps = appRepository.findByAppIdIn(appIds, pageable);
+    return BeanUtils.batchTransform(App.class,portalApps);
   }
 
   public List<App> findByOwnerName(String ownerName, Pageable page) {
-    return appRepository.findByOwnerName(ownerName, page);
+    List<PortalApp> portalApps =  appRepository.findByOwnerName(ownerName, page);
+    return BeanUtils.batchTransform(App.class,portalApps);
   }
 
   public App load(String appId) {
-    return appRepository.findByAppId(appId);
+    PortalApp portalApp = appRepository.findByAppId(appId);
+    return BeanUtils.transform(App.class,portalApp);
   }
 
   public AppDTO load(Env env, String appId) {
@@ -111,7 +117,7 @@ public class AppService {
   @Transactional
   public App createAppInLocal(App app) {
     String appId = app.getAppId();
-    App managedApp = appRepository.findByAppId(appId);
+    PortalApp managedApp = appRepository.findByAppId(appId);
 
     if (managedApp != null) {
       throw new BadRequestException(String.format("App already exists. AppId = %s", appId));
@@ -126,8 +132,9 @@ public class AppService {
     String operator = userInfoHolder.getUser().getUserId();
     app.setDataChangeCreatedBy(operator);
     app.setDataChangeLastModifiedBy(operator);
-
-    App createdApp = appRepository.save(app);
+    PortalApp portalApp = BeanUtils.transform(PortalApp.class,app);
+    PortalApp createPortalApp = appRepository.save(portalApp);
+    App createdApp = BeanUtils.transform(App.class,createPortalApp);
 
     appNamespaceService.createDefaultAppNamespace(appId);
     roleInitializationService.initAppRoles(createdApp);
@@ -141,7 +148,7 @@ public class AppService {
   public App updateAppInLocal(App app) {
     String appId = app.getAppId();
 
-    App managedApp = appRepository.findByAppId(appId);
+    PortalApp managedApp = appRepository.findByAppId(appId);
     if (managedApp == null) {
       throw new BadRequestException(String.format("App not exists. AppId = %s", appId));
     }
@@ -160,8 +167,9 @@ public class AppService {
 
     String operator = userInfoHolder.getUser().getUserId();
     managedApp.setDataChangeLastModifiedBy(operator);
-
-    return appRepository.save(managedApp);
+    PortalApp portalApp = BeanUtils.transform(PortalApp.class,managedApp);
+    PortalApp createPortalApp = appRepository.save(portalApp);
+    return BeanUtils.transform(App.class,createPortalApp);
   }
 
   public EnvClusterInfo createEnvNavNode(Env env, String appId) {
@@ -172,7 +180,7 @@ public class AppService {
 
   @Transactional
   public App deleteAppInLocal(String appId) {
-    App managedApp = appRepository.findByAppId(appId);
+    PortalApp managedApp = appRepository.findByAppId(appId);
     if (managedApp == null) {
       throw new BadRequestException(String.format("App not exists. AppId = %s", appId));
     }
@@ -193,6 +201,7 @@ public class AppService {
     //删除portal数据库中Permission、Role相关数据
     rolePermissionService.deleteRolePermissionsByAppId(appId, operator);
 
-    return managedApp;
+
+    return BeanUtils.transform(App.class,managedApp);
   }
 }
