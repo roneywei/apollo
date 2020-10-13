@@ -40,7 +40,7 @@ public class Release extends BaseEntity {
   @Lob
   private String configurations;
 
-  @Column(name = "COMMENT_MSG", nullable = false)
+  @Column(name = "COMMENT_MSG")
   private String comment;
 
   @Column(name = "ABANDONED_FLAG", columnDefinition = "Number(1) default 0 ")
