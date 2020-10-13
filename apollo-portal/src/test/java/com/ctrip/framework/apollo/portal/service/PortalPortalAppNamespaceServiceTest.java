@@ -13,7 +13,7 @@ import org.springframework.test.context.jdbc.Sql;
 
 import java.util.List;
 
-public class AppNamespaceServiceTest extends AbstractIntegrationTest {
+public class PortalPortalAppNamespaceServiceTest extends AbstractIntegrationTest {
 
   @Autowired
   private AppNamespaceService appNamespaceService;

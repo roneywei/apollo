@@ -20,7 +20,7 @@ import javax.validation.constraints.Pattern;
 })
 @SQLDelete(sql = "Update PORTAL_APP set DELETED_FLAG = 1 where ID = ?")
 @Where(clause = "DELETED_FLAG = 0")
-public class App extends BaseEntity {
+public class PortalApp extends BaseEntity {
 
   @NotBlank(message = "Name cannot be blank")
   @Column(name = "NAME", nullable = false)
@@ -109,40 +109,40 @@ public class App extends BaseEntity {
     public Builder() {
     }
 
-    private App app = new App();
+    private PortalApp portalApp = new PortalApp();
 
     public Builder name(String name) {
-      app.setName(name);
+      portalApp.setName(name);
       return this;
     }
 
     public Builder appId(String appId) {
-      app.setAppId(appId);
+      portalApp.setAppId(appId);
       return this;
     }
 
     public Builder orgId(String orgId) {
-      app.setOrgId(orgId);
+      portalApp.setOrgId(orgId);
       return this;
     }
 
     public Builder orgName(String orgName) {
-      app.setOrgName(orgName);
+      portalApp.setOrgName(orgName);
       return this;
     }
 
     public Builder ownerName(String ownerName) {
-      app.setOwnerName(ownerName);
+      portalApp.setOwnerName(ownerName);
       return this;
     }
 
     public Builder ownerEmail(String ownerEmail) {
-      app.setOwnerEmail(ownerEmail);
+      portalApp.setOwnerEmail(ownerEmail);
       return this;
     }
 
-    public App build() {
-      return app;
+    public PortalApp build() {
+      return portalApp;
     }
 
   }

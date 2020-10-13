@@ -22,7 +22,7 @@ import javax.validation.constraints.Pattern;
 })
 @SQLDelete(sql = "Update PORTAL_APP_NAMESPACE set DELETED_FLAG = 1 where ID = ?")
 @Where(clause = "DELETED_FLAG = 0")
-public class AppNamespace extends BaseEntity {
+public class PortalAppNamespace extends BaseEntity {
 
   @NotBlank(message = "AppNamespace Name cannot be blank")
   @Pattern(
