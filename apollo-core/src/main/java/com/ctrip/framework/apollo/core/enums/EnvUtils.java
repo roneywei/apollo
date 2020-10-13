@@ -19,6 +19,8 @@ public final class EnvUtils {
       case "PRO":
       case "PROD": //just in case
         return Env.PRO;
+      case "SIT":
+        return Env.SIT;
       case "DEV":
         return Env.DEV;
       case "LOCAL":
