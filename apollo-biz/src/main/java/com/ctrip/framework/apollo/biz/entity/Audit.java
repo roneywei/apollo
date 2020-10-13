@@ -11,10 +11,10 @@ import javax.persistence.Index;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "APOLLO_AUDIT",indexes = {
+@Table(name = "CONFIG_AUDIT",indexes = {
         @Index(name = "IDX_AUDIT_DATACHANGE_LASTTIME", columnList = "DATACHANGE_LASTTIME"),
 })
-@SQLDelete(sql = "Update APOLLO_AUDIT set DELETED_FLAG = 1 where ID = ?")
+@SQLDelete(sql = "Update CONFIG_AUDIT set DELETED_FLAG = 1 where ID = ?")
 @Where(clause = "DELETED_FLAG = 0")
 public class Audit extends BaseEntity {
 

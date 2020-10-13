@@ -14,13 +14,13 @@ import javax.persistence.Table;
  * @author Jason Song(song_s@ctrip.com)
  */
 @Entity
-@Table(name = "APOLLO_CLUSTER",indexes = {
+@Table(name = "CONFIG_CLUSTER",indexes = {
         @Index(name = "IDX_CLUSTER_NAME", columnList = "NAME"),
         @Index(name = "IDX_CLUSTER_APP_ID", columnList = "APP_ID"),
         @Index(name = "IDX_CLUSTER_PARENT_ID", columnList = "PARENT_CLUSTER_ID"),
         @Index(name = "IDX_CLUSTER_CHANGE_LASTTIME", columnList = "DATACHANGE_LASTTIME"),
 })
-@SQLDelete(sql = "Update APOLLO_CLUSTER set DELETED_FLAG = 1 where ID = ?")
+@SQLDelete(sql = "Update CONFIG_CLUSTER set DELETED_FLAG = 1 where ID = ?")
 @Where(clause = "DELETED_FLAG = 0")
 public class Cluster extends BaseEntity implements Comparable<Cluster> {
 

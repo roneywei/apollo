@@ -10,7 +10,7 @@ import javax.persistence.*;
  * @author Jason Song(song_s@ctrip.com)
  */
 @Entity
-@Table(name = "CONSUMER_AUDIT",indexes = {
+@Table(name = "PORTAL_CONSUMER_AUDIT",indexes = {
         @Index(name = "IDX_CONAUDIT_CONSUMER_ID", columnList = "CONSUMER_ID"),
         @Index(name = "IDX_CONAUDIT_CHANGE_LASTTIME", columnList = "DATACHANGE_LASTTIME"),
 })

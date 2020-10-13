@@ -14,12 +14,12 @@ import javax.persistence.Table;
  * @author Jason Song(song_s@ctrip.com)
  */
 @Entity
-@Table(name = "CONSUMER_ROLE",indexes = {
+@Table(name = "PORTAL_CONSUMER_ROLE",indexes = {
         @Index(name = "IDX_CONROLE_CONSUMER_ID", columnList = "CONSUMER_ID"),
         @Index(name = "IDX_CONROLE_ROLE_ID", columnList = "ROLE_ID"),
         @Index(name = "IDX_CONROLE_CHANGE_LASTTIME", columnList = "DATACHANGE_LASTTIME"),
 })
-@SQLDelete(sql = "Update CONSUMER_ROLE set DELETED_FLAG = 1 where ID = ?")
+@SQLDelete(sql = "Update PORTAL_CONSUMER_ROLE set DELETED_FLAG = 1 where ID = ?")
 @Where(clause = "DELETED_FLAG = 0")
 public class ConsumerRole extends BaseEntity {
   @Column(name = "CONSUMER_ID", nullable = false)

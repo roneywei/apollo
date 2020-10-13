@@ -11,12 +11,12 @@ import org.hibernate.annotations.SQLDelete;
 import org.hibernate.annotations.Where;
 
 @Entity
-@Table(name = "APP_NAMESPACE",indexes = {
+@Table(name = "CONFIG_APP_NAMESPACE",indexes = {
         @Index(name = "IDX_APP_NAMESPACE_APP_ID", columnList = "APP_ID"),
         @Index(name = "IDX_APP_NAMESPACE_NAME", columnList = "NAME"),
         @Index(name = "IDX_APPNASP_CHANGE_LASTTIME", columnList = "DATACHANGE_LASTTIME"),
 })
-@SQLDelete(sql = "Update APP_NAMESPACE set DELETED_FLAG = 1 where ID = ?")
+@SQLDelete(sql = "Update CONFIG_APP_NAMESPACE set DELETED_FLAG = 1 where ID = ?")
 @Where(clause = "DELETED_FLAG = 0")
 public class AppNamespace extends BaseEntity {
 

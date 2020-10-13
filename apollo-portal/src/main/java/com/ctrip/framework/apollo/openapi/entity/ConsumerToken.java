@@ -16,12 +16,12 @@ import javax.persistence.Table;
  * @author Jason Song(song_s@ctrip.com)
  */
 @Entity
-@Table(name = "CONSUMER_TOKEN",indexes = {
+@Table(name = "PORTAL_CONSUMER_TOKEN",indexes = {
         @Index(name = "IDX_CONTOKEN_CONSUMER_ID", columnList = "CONSUMER_ID"),
         @Index(name = "IDX_CONTOKEN_TOKEN", columnList = "TOKEN",unique = true),
         @Index(name = "IDX_CONTOKEN_CHANGE_LASTTIME", columnList = "DATACHANGE_LASTTIME"),
 })
-@SQLDelete(sql = "Update CONSUMER_TOKEN set DELETED_FLAG = 1 where ID = ?")
+@SQLDelete(sql = "Update PORTAL_CONSUMER_TOKEN set DELETED_FLAG = 1 where ID = ?")
 @Where(clause = "DELETED_FLAG = 0")
 public class ConsumerToken extends BaseEntity {
   @Column(name = "CONSUMER_ID", nullable = false)

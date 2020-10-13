@@ -10,7 +10,7 @@ import javax.persistence.*;
  * @author Jason Song(song_s@ctrip.com)
  */
 @Entity
-@Table(name = "INSTANCE",uniqueConstraints = {
+@Table(name = "CONFIG_INSTANCE",uniqueConstraints = {
         @UniqueConstraint(name="UK_INSTANCE_APP_ID_CN_DC_IP",columnNames = {"APP_ID","CLUSTER_NAME","DATA_CENTER","IP"})
 },
 indexes = {

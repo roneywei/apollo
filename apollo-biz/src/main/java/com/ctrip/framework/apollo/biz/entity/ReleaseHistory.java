@@ -14,7 +14,7 @@ import javax.persistence.Table;
  * @author Jason Song(song_s@ctrip.com)
  */
 @Entity
-@Table(name = "RELEASE_HISTORY",indexes = {
+@Table(name = "CONFIG_RELEASE_HISTORY",indexes = {
         @Index(name = "IDX_RELEASEHI_APP_ID", columnList = "APP_ID"),
         @Index(name = "IDX_RELEASEHI_CLUSTER_NAME", columnList = "CLUSTER_NAME"),
         @Index(name = "IDX_RELEASEHI_NAMESPACE_NAME", columnList = "NAMESPACE_NAME"),
@@ -22,7 +22,7 @@ import javax.persistence.Table;
         @Index(name = "IDX_RELEASEHI_RELEASE_ID", columnList = "RELEASE_ID"),
         @Index(name = "IDX_RELEASEHI_CHANGE_LASTTIME", columnList = "DATACHANGE_LASTTIME"),
 })
-@SQLDelete(sql = "Update RELEASE_HISTORY set DELETED_FLAG = 1 where ID = ?")
+@SQLDelete(sql = "Update CONFIG_RELEASE_HISTORY set DELETED_FLAG = 1 where ID = ?")
 @Where(clause = "DELETED_FLAG = 0")
 public class ReleaseHistory extends BaseEntity {
   @Column(name = "APP_ID", nullable = false)

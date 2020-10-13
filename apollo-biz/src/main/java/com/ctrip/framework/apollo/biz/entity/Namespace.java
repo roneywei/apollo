@@ -11,13 +11,13 @@ import javax.persistence.Index;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "NAMESPACE",indexes = {
+@Table(name = "CONFIG_NAMESPACE",indexes = {
         @Index(name = "IDX_NAMESPACE_APP_ID", columnList = "APP_ID"),
         @Index(name = "IDX_NAMESPACE_CLUSTER_NAME", columnList = "CLUSTER_NAME"),
         @Index(name = "IDX_NAMESPACE_NAMESPACE_NAME", columnList = "NAMESPACE_NAME"),
         @Index(name = "IDX_NAMESPACE_CHANGE_LASTTIME", columnList = "DATACHANGE_LASTTIME"),
 })
-@SQLDelete(sql = "Update NAMESPACE set DELETED_FLAG = 1 where ID = ?")
+@SQLDelete(sql = "Update CONFIG_NAMESPACE set DELETED_FLAG = 1 where ID = ?")
 @Where(clause = "DELETED_FLAG = 0")
 public class Namespace extends BaseEntity {
 

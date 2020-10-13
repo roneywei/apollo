@@ -8,11 +8,11 @@ import org.hibernate.annotations.Where;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "ITEM",indexes = {
+@Table(name = "CONFIG_ITEM",indexes = {
         @Index(name = "IDX_ITEM_NAMESPACE_ID", columnList = "NAMESPACE_ID"),
         @Index(name = "IDX_ITEM_CHANGE_LASTTIME", columnList = "DATACHANGE_LASTTIME"),
 })
-@SQLDelete(sql = "Update ITEM set DELETED_FLAG = 1 where ID = ?")
+@SQLDelete(sql = "Update CONFIG_ITEM set DELETED_FLAG = 1 where ID = ?")
 @Where(clause = "DELETED_FLAG = 0")
 public class Item extends BaseEntity {
 

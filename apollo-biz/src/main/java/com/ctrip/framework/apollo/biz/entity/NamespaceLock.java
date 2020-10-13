@@ -7,7 +7,7 @@ import org.hibernate.annotations.Where;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "NAMESPACE_LOCK",
+@Table(name = "CONFIG_NAMESPACE_LOCK",
         uniqueConstraints = {
         @UniqueConstraint(name = "UK_NAMESPACE_LOCK_NAMESPACE_ID",columnNames = {"NAMESPACE_ID"})
         },

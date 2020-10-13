@@ -11,14 +11,14 @@ import javax.persistence.Index;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "GRAY_RELEASE_RULE",indexes = {
+@Table(name = "CONFIG_GRAY_RELEASE_RULE",indexes = {
         @Index(name = "IDX_GRARRULE_APP_ID", columnList = "APP_ID"),
         @Index(name = "IDX_GRARRULE_CLUSTER_NAME", columnList = "CLUSTER_NAME"),
         @Index(name = "IDX_GRARRULE_NAMESPACE_NAME", columnList = "NAMESPACE_NAME"),
         @Index(name = "IDX_GRARRULE_RELEASE_ID", columnList = "RELEASE_ID"),
         @Index(name = "IDX_GRARRULE_CHANGE_LASTTIME", columnList = "DATACHANGE_LASTTIME"),
 })
-@SQLDelete(sql = "Update GRAY_RELEASE_RULE set DELETED_FLAG = 1 where ID = ?")
+@SQLDelete(sql = "Update CONFIG_GRAY_RELEASE_RULE set DELETED_FLAG = 1 where ID = ?")
 @Where(clause = "DELETED_FLAG = 0")
 public class GrayReleaseRule extends BaseEntity{
 

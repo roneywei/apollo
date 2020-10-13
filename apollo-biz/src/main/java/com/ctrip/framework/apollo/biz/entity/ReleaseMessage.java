@@ -10,7 +10,7 @@ import javax.persistence.*;
  * @author Jason Song(song_s@ctrip.com)
  */
 @Entity
-@Table(name = "RELEASE_MESSAGE",indexes = {
+@Table(name = "CONFIG_RELEASE_MESSAGE",indexes = {
         @Index(name = "IDX_RELEASEMES_MESSAGE", columnList = "MESSAGE"),
         @Index(name = "IDX_RELEASEMES_CHANGE_LASTTIME", columnList = "DATACHANGE_LASTTIME"),
 })

@@ -11,14 +11,14 @@ import javax.persistence.*;
  * @author Jason Song(song_s@ctrip.com)
  */
 @Entity
-@Table(name = "RELEASE",indexes = {
+@Table(name = "CONFIG_RELEASE",indexes = {
         @Index(name = "IDX_RELEASE_APP_ID", columnList = "APP_ID"),
         @Index(name = "IDX_RELEASE_CLUSTER_NAME", columnList = "CLUSTER_NAME"),
         @Index(name = "IDX_RELEASE_NAMESPACE_NAME", columnList = "NAMESPACE_NAME"),
         @Index(name = "IDX_RELEASE_RELEASE_KEY", columnList = "RELEASE_KEY"),
         @Index(name = "IDX_RELEASE_CHANGE_LASTTIME", columnList = "DATACHANGE_LASTTIME"),
 })
-@SQLDelete(sql = "Update RELEASE set DELETED_FLAG = 1 where ID = ?")
+@SQLDelete(sql = "Update CONFIG_RELEASE set DELETED_FLAG = 1 where ID = ?")
 @Where(clause = "DELETED_FLAG = 0")
 public class Release extends BaseEntity {
   @Column(name = "RELEASE_KEY", nullable = false)
