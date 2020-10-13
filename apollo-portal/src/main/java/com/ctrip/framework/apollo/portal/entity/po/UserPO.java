@@ -8,7 +8,7 @@ import javax.persistence.*;
  * @author lepdou 2017-04-08
  */
 @Entity
-@Table(name = "USERS")
+@Table(name = "PORTAL_USERS")
 public class UserPO {
 
   @Id

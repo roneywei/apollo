@@ -13,7 +13,7 @@ import javax.persistence.*;
  * @date 2020-09-15 14:10
  */
 @Entity
-@Table(name = "AUTHORITIES")
+@Table(name = "PORTAL_AUTHORITIES")
 public class Authorities   {
 
     @Id
