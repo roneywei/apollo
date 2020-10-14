@@ -22,10 +22,10 @@ import javax.persistence.Table;
 @SQLDelete(sql = "Update PORTAL_ROLE_PERMISSION set DELETED_FLAG = 1 where ID = ?")
 @Where(clause = "DELETED_FLAG = 0")
 public class RolePermission extends BaseEntity {
-  @Column(name = "ROLE_ID", nullable = false)
+  @Column(name = "ROLE_ID", length = 19)
   private long roleId;
 
-  @Column(name = "PERMISSION_ID", nullable = false)
+  @Column(name = "PERMISSION_ID", length = 19)
   private long permissionId;
 
   public long getRoleId() {

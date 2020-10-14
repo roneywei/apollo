@@ -16,13 +16,13 @@ public class UserPO {
   @SequenceGenerator(name = "sequence", sequenceName = "APOLLO_ID_SEQ", allocationSize = 1)
   @Column(name = "ID")
   private long id;
-  @Column(name = "USERNAME", nullable = false)
+  @Column(name = "USERNAME", nullable = false, length = 64)
   private String username;
-  @Column(name = "PASSWORD", nullable = false)
+  @Column(name = "PASSWORD", nullable = false, length = 64)
   private String password;
-  @Column(name = "EMAIL", nullable = false)
+  @Column(name = "EMAIL", nullable = false, length = 64)
   private String email;
-  @Column(name = "ENABLED", nullable = false)
+  @Column(name = "ENABLED")
   private int enabled;
 
   public long getId() {

@@ -24,14 +24,14 @@ import javax.persistence.Table;
 @Where(clause = "DELETED_FLAG = 0")
 public class ServerConfig extends BaseEntity {
   @NotBlank(message = "ServerConfig.Key cannot be blank")
-  @Column(name = "CONFIG_KEY", nullable = false)
+  @Column(name = "CONFIG_KEY", nullable = false, length = 256)
   private String key;
 
   @NotBlank(message = "ServerConfig.Value cannot be blank")
-  @Column(name = "CONFIG_VALUE", nullable = false)
+  @Column(name = "CONFIG_VALUE", nullable = false, length = 2048)
   private String value;
 
-  @Column(name = "CONFIG_COMMENT", nullable = false)
+  @Column(name = "CONFIG_COMMENT", length = 1024)
   private String comment;
 
   public String getKey() {

@@ -21,7 +21,7 @@ import javax.persistence.Table;
 @SQLDelete(sql = "Update PORTAL_ROLE set DELETED_FLAG = 1 where ID = ?")
 @Where(clause = "DELETED_FLAG = 0")
 public class Role extends BaseEntity {
-  @Column(name = "ROLE_NAME", nullable = false)
+  @Column(name = "ROLE_NAME", nullable = false, length = 256)
   private String roleName;
 
   public String getRoleName() {

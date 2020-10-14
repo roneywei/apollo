@@ -21,13 +21,13 @@ public class ConsumerAudit {
   @Column(name = "ID")
   private long id;
 
-  @Column(name = "CONSUMER_ID", nullable = false)
+  @Column(name = "CONSUMER_ID", length = 19)
   private long consumerId;
 
-  @Column(name = "URI", nullable = false)
+  @Column(name = "URI", nullable = false, length = 1024)
   private String uri;
 
-  @Column(name = "METHOD", nullable = false)
+  @Column(name = "METHOD", nullable = false, length = 16)
   private String method;
 
   @Column(name = "DATACHANGE_CREATEDTIME", columnDefinition = "TIMESTAMP(6)  DEFAULT CURRENT_TIMESTAMP  NOT NULL ")

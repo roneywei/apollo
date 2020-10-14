@@ -23,29 +23,29 @@ import javax.validation.constraints.Pattern;
 public class PortalApp extends BaseEntity {
 
   @NotBlank(message = "Name cannot be blank")
-  @Column(name = "NAME", nullable = false)
+  @Column(name = "NAME", nullable = false, length = 500)
   private String name;
 
   @NotBlank(message = "AppId cannot be blank")
   @Pattern(
-      regexp = InputValidator.CLUSTER_NAMESPACE_VALIDATOR,
-      message = InputValidator.INVALID_CLUSTER_NAMESPACE_MESSAGE
+          regexp = InputValidator.CLUSTER_NAMESPACE_VALIDATOR,
+          message = InputValidator.INVALID_CLUSTER_NAMESPACE_MESSAGE
   )
-  @Column(name = "APP_ID", nullable = false)
+  @Column(name = "APP_ID", nullable = false, length = 500)
   private String appId;
 
-  @Column(name = "ORG_ID", nullable = false)
+  @Column(name = "ORG_ID", nullable = false, length = 32)
   private String orgId;
 
-  @Column(name = "ORG_NAME", nullable = false)
+  @Column(name = "ORG_NAME", nullable = false, length = 64)
   private String orgName;
 
   @NotBlank(message = "OwnerName cannot be blank")
-  @Column(name = "OWNER_NAME", nullable = false)
+  @Column(name = "OWNER_NAME", nullable = false, length = 500)
   private String ownerName;
 
   @NotBlank(message = "OwnerEmail cannot be blank")
-  @Column(name = "OWNER_EMAIL", nullable = false)
+  @Column(name = "OWNER_EMAIL", nullable = false, length = 500)
   private String ownerEmail;
 
   public String getAppId() {

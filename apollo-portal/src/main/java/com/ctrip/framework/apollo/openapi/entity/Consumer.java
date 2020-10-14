@@ -19,22 +19,22 @@ import javax.persistence.Table;
 @Where(clause = "DELETED_FLAG = 0")
 public class Consumer extends BaseEntity {
 
-  @Column(name = "NAME", nullable = false)
+  @Column(name = "NAME", nullable = false, length = 500)
   private String name;
 
-  @Column(name = "APP_ID", nullable = false)
+  @Column(name = "APP_ID", nullable = false, length = 500)
   private String appId;
 
-  @Column(name = "ORG_ID", nullable = false)
+  @Column(name = "ORG_ID", nullable = false, length = 32)
   private String orgId;
 
-  @Column(name = "ORG_NAME", nullable = false)
+  @Column(name = "ORG_NAME", nullable = false, length = 64)
   private String orgName;
 
-  @Column(name = "OWNER_NAME", nullable = false)
+  @Column(name = "OWNER_NAME", nullable = false, length = 500)
   private String ownerName;
 
-  @Column(name = "OWNER_EMAIL", nullable = false)
+  @Column(name = "OWNER_EMAIL", nullable = false, length = 500)
   private String ownerEmail;
 
   public String getAppId() {

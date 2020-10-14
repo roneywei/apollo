@@ -21,10 +21,10 @@ public class Authorities   {
     @SequenceGenerator(name = "sequence", sequenceName = "APOLLO_ID_SEQ", allocationSize = 1)
     @Column(name = "ID")
     private long id;
-    @Column(name = "USERNAME", nullable = false)
+    @Column(name = "USERNAME", nullable = false, length = 64)
     private String username;
 
-    @Column(name = "AUTHORITY", nullable = false)
+    @Column(name = "AUTHORITY", nullable = false, length = 50)
     private String authority;
 
     public long getId() {
