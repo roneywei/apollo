@@ -11,7 +11,7 @@ Target Server Type    : ORACLE
 Target Server Version : 110200
 File Encoding         : 65001
 
-Date: 2020-10-13 19:55:59
+Date: 2020-10-14 09:11:01
 */
 
 
@@ -363,7 +363,7 @@ CREATE TABLE "CONFIG_RELEASE" (
 "DELETED_FLAG" NUMBER(1) DEFAULT 0  NULL ,
 "APP_ID" VARCHAR2(255 BYTE) NOT NULL ,
 "CLUSTER_NAME" VARCHAR2(255 BYTE) NOT NULL ,
-"COMMENT_MSG" VARCHAR2(255 BYTE) NOT NULL ,
+"COMMENT_MSG" VARCHAR2(255 BYTE) NULL ,
 "CONFIGURATIONS" CLOB NOT NULL ,
 "ABANDONED_FLAG" NUMBER(1) DEFAULT 0  NULL ,
 "NAME" VARCHAR2(255 BYTE) NOT NULL ,
@@ -454,11 +454,11 @@ NOCACHE
 -- ----------------------------
 -- Records of CONFIG_SERVER_CONFIG
 -- ----------------------------
-INSERT INTO "CONFIG_SERVER_CONFIG" VALUES ('1', 'apollo', TO_TIMESTAMP(' 2020-10-13 19:53:31:254000', 'YYYY-MM-DD HH24:MI:SS:FF6'), 'apollo', TO_TIMESTAMP(' 2020-10-13 19:53:31:254000', 'YYYY-MM-DD HH24:MI:SS:FF6'), '0', 'default', 'Eureka服务Url，多个service以英文逗号分隔', 'eureka.service.url', 'http://localhost:8080/eureka/');
-INSERT INTO "CONFIG_SERVER_CONFIG" VALUES ('2', 'apollo', TO_TIMESTAMP(' 2020-10-13 19:53:31:443000', 'YYYY-MM-DD HH24:MI:SS:FF6'), 'apollo', TO_TIMESTAMP(' 2020-10-13 19:53:31:443000', 'YYYY-MM-DD HH24:MI:SS:FF6'), '0', 'default', '一次发布只能有一个人修改开关', 'namespace.lock.switch', 'false');
-INSERT INTO "CONFIG_SERVER_CONFIG" VALUES ('3', 'apollo', TO_TIMESTAMP(' 2020-10-13 19:53:31:446000', 'YYYY-MM-DD HH24:MI:SS:FF6'), 'apollo', TO_TIMESTAMP(' 2020-10-13 19:53:31:446000', 'YYYY-MM-DD HH24:MI:SS:FF6'), '0', 'default', 'item key 最大长度限制', 'item.key.length.limit', '128');
-INSERT INTO "CONFIG_SERVER_CONFIG" VALUES ('4', 'apollo', TO_TIMESTAMP(' 2020-10-13 19:53:31:449000', 'YYYY-MM-DD HH24:MI:SS:FF6'), 'apollo', TO_TIMESTAMP(' 2020-10-13 19:53:31:449000', 'YYYY-MM-DD HH24:MI:SS:FF6'), '0', 'default', 'item value最大长度限制', 'item.value.length.limit', '20000');
-INSERT INTO "CONFIG_SERVER_CONFIG" VALUES ('5', 'apollo', TO_TIMESTAMP(' 2020-10-13 19:53:31:451000', 'YYYY-MM-DD HH24:MI:SS:FF6'), 'apollo', TO_TIMESTAMP(' 2020-10-13 19:53:31:451000', 'YYYY-MM-DD HH24:MI:SS:FF6'), '0', 'default', 'ConfigService是否开启缓存，开启后能提高性能，但是会增大内存消耗！', 'config-service.cache.enabled', 'false');
+INSERT INTO "CONFIG_SERVER_CONFIG" VALUES ('1', 'apollo', TO_TIMESTAMP(' 2020-10-14 09:09:05:501000', 'YYYY-MM-DD HH24:MI:SS:FF6'), 'apollo', TO_TIMESTAMP(' 2020-10-14 09:09:05:501000', 'YYYY-MM-DD HH24:MI:SS:FF6'), '0', 'default', 'Eureka服务Url，多个service以英文逗号分隔', 'eureka.service.url', 'http://localhost:8080/eureka/');
+INSERT INTO "CONFIG_SERVER_CONFIG" VALUES ('2', 'apollo', TO_TIMESTAMP(' 2020-10-14 09:09:05:674000', 'YYYY-MM-DD HH24:MI:SS:FF6'), 'apollo', TO_TIMESTAMP(' 2020-10-14 09:09:05:674000', 'YYYY-MM-DD HH24:MI:SS:FF6'), '0', 'default', '一次发布只能有一个人修改开关', 'namespace.lock.switch', 'false');
+INSERT INTO "CONFIG_SERVER_CONFIG" VALUES ('3', 'apollo', TO_TIMESTAMP(' 2020-10-14 09:09:05:677000', 'YYYY-MM-DD HH24:MI:SS:FF6'), 'apollo', TO_TIMESTAMP(' 2020-10-14 09:09:05:677000', 'YYYY-MM-DD HH24:MI:SS:FF6'), '0', 'default', 'item key 最大长度限制', 'item.key.length.limit', '128');
+INSERT INTO "CONFIG_SERVER_CONFIG" VALUES ('4', 'apollo', TO_TIMESTAMP(' 2020-10-14 09:09:05:679000', 'YYYY-MM-DD HH24:MI:SS:FF6'), 'apollo', TO_TIMESTAMP(' 2020-10-14 09:09:05:679000', 'YYYY-MM-DD HH24:MI:SS:FF6'), '0', 'default', 'item value最大长度限制', 'item.value.length.limit', '20000');
+INSERT INTO "CONFIG_SERVER_CONFIG" VALUES ('5', 'apollo', TO_TIMESTAMP(' 2020-10-14 09:09:05:681000', 'YYYY-MM-DD HH24:MI:SS:FF6'), 'apollo', TO_TIMESTAMP(' 2020-10-14 09:09:05:681000', 'YYYY-MM-DD HH24:MI:SS:FF6'), '0', 'default', 'ConfigService是否开启缓存，开启后能提高性能，但是会增大内存消耗！', 'config-service.cache.enabled', 'false');
 
 -- ----------------------------
 -- Table structure for PORTAL_APP
@@ -533,7 +533,7 @@ NOCACHE
 -- ----------------------------
 -- Records of PORTAL_AUTHORITIES
 -- ----------------------------
-INSERT INTO "PORTAL_AUTHORITIES" VALUES ('12', 'ROLE_user', 'apollo');
+INSERT INTO "PORTAL_AUTHORITIES" VALUES ('13', 'ROLE_user', 'apollo');
 
 -- ----------------------------
 -- Table structure for PORTAL_CONSUMER
@@ -682,7 +682,7 @@ NOCACHE
 -- ----------------------------
 -- Records of PORTAL_PERMISSION
 -- ----------------------------
-INSERT INTO "PORTAL_PERMISSION" VALUES ('1', 'apollo', TO_TIMESTAMP(' 2020-10-13 19:52:00:095000', 'YYYY-MM-DD HH24:MI:SS:FF6'), 'apollo', TO_TIMESTAMP(' 2020-10-13 19:52:00:095000', 'YYYY-MM-DD HH24:MI:SS:FF6'), '0', 'CreateApplication', 'SystemRole');
+INSERT INTO "PORTAL_PERMISSION" VALUES ('1', 'apollo', TO_TIMESTAMP(' 2020-10-14 09:09:29:432000', 'YYYY-MM-DD HH24:MI:SS:FF6'), 'apollo', TO_TIMESTAMP(' 2020-10-14 09:09:29:432000', 'YYYY-MM-DD HH24:MI:SS:FF6'), '0', 'CreateApplication', 'SystemRole');
 
 -- ----------------------------
 -- Table structure for PORTAL_ROLE
@@ -706,7 +706,7 @@ NOCACHE
 -- ----------------------------
 -- Records of PORTAL_ROLE
 -- ----------------------------
-INSERT INTO "PORTAL_ROLE" VALUES ('2', 'apollo', TO_TIMESTAMP(' 2020-10-13 19:52:00:113000', 'YYYY-MM-DD HH24:MI:SS:FF6'), 'apollo', TO_TIMESTAMP(' 2020-10-13 19:52:00:113000', 'YYYY-MM-DD HH24:MI:SS:FF6'), '0', 'CreateApplication+SystemRole');
+INSERT INTO "PORTAL_ROLE" VALUES ('2', 'apollo', TO_TIMESTAMP(' 2020-10-14 09:09:29:450000', 'YYYY-MM-DD HH24:MI:SS:FF6'), 'apollo', TO_TIMESTAMP(' 2020-10-14 09:09:29:450000', 'YYYY-MM-DD HH24:MI:SS:FF6'), '0', 'CreateApplication+SystemRole');
 
 -- ----------------------------
 -- Table structure for PORTAL_ROLE_PERMISSION
@@ -731,7 +731,7 @@ NOCACHE
 -- ----------------------------
 -- Records of PORTAL_ROLE_PERMISSION
 -- ----------------------------
-INSERT INTO "PORTAL_ROLE_PERMISSION" VALUES ('3', 'apollo', TO_TIMESTAMP(' 2020-10-13 19:52:00:114000', 'YYYY-MM-DD HH24:MI:SS:FF6'), 'apollo', TO_TIMESTAMP(' 2020-10-13 19:52:00:114000', 'YYYY-MM-DD HH24:MI:SS:FF6'), '0', '1', '2');
+INSERT INTO "PORTAL_ROLE_PERMISSION" VALUES ('3', 'apollo', TO_TIMESTAMP(' 2020-10-14 09:09:29:451000', 'YYYY-MM-DD HH24:MI:SS:FF6'), 'apollo', TO_TIMESTAMP(' 2020-10-14 09:09:29:451000', 'YYYY-MM-DD HH24:MI:SS:FF6'), '0', '1', '2');
 
 -- ----------------------------
 -- Table structure for PORTAL_SERVER_CONFIG
@@ -757,14 +757,14 @@ NOCACHE
 -- ----------------------------
 -- Records of PORTAL_SERVER_CONFIG
 -- ----------------------------
-INSERT INTO "PORTAL_SERVER_CONFIG" VALUES ('4', 'apollo', TO_TIMESTAMP(' 2020-10-13 19:52:00:659000', 'YYYY-MM-DD HH24:MI:SS:FF6'), 'apollo', TO_TIMESTAMP(' 2020-10-13 19:52:00:659000', 'YYYY-MM-DD HH24:MI:SS:FF6'), '0', '可支持的环境列表', 'apollo.portal.envs', 'dev');
-INSERT INTO "PORTAL_SERVER_CONFIG" VALUES ('5', 'apollo', TO_TIMESTAMP(' 2020-10-13 19:52:00:767000', 'YYYY-MM-DD HH24:MI:SS:FF6'), 'apollo', TO_TIMESTAMP(' 2020-10-13 19:52:00:767000', 'YYYY-MM-DD HH24:MI:SS:FF6'), '0', '部门列表', 'organizations', '[{"orgId":"TEST1","orgName":"样例部门1"},{"orgId":"TEST2","orgName":"样例部门2"}]');
-INSERT INTO "PORTAL_SERVER_CONFIG" VALUES ('6', 'apollo', TO_TIMESTAMP(' 2020-10-13 19:52:00:770000', 'YYYY-MM-DD HH24:MI:SS:FF6'), 'apollo', TO_TIMESTAMP(' 2020-10-13 19:52:00:770000', 'YYYY-MM-DD HH24:MI:SS:FF6'), '0', 'Portal超级管理员', 'superAdmin', 'apollo');
-INSERT INTO "PORTAL_SERVER_CONFIG" VALUES ('7', 'apollo', TO_TIMESTAMP(' 2020-10-13 19:52:00:772000', 'YYYY-MM-DD HH24:MI:SS:FF6'), 'apollo', TO_TIMESTAMP(' 2020-10-13 19:52:00:772000', 'YYYY-MM-DD HH24:MI:SS:FF6'), '0', 'http接口read timeout', 'api.readTimeout', '10000');
-INSERT INTO "PORTAL_SERVER_CONFIG" VALUES ('8', 'apollo', TO_TIMESTAMP(' 2020-10-13 19:52:00:774000', 'YYYY-MM-DD HH24:MI:SS:FF6'), 'apollo', TO_TIMESTAMP(' 2020-10-13 19:52:00:774000', 'YYYY-MM-DD HH24:MI:SS:FF6'), '0', 'consumer token salt', 'consumer.token.salt', 'someSalt');
-INSERT INTO "PORTAL_SERVER_CONFIG" VALUES ('9', 'apollo', TO_TIMESTAMP(' 2020-10-13 19:52:00:776000', 'YYYY-MM-DD HH24:MI:SS:FF6'), 'apollo', TO_TIMESTAMP(' 2020-10-13 19:52:00:776000', 'YYYY-MM-DD HH24:MI:SS:FF6'), '0', '是否允许项目管理员创建私有namespace', 'admin.createPrivateNamespace.switch', 'true');
-INSERT INTO "PORTAL_SERVER_CONFIG" VALUES ('10', 'apollo', TO_TIMESTAMP(' 2020-10-13 19:52:00:779000', 'YYYY-MM-DD HH24:MI:SS:FF6'), 'apollo', TO_TIMESTAMP(' 2020-10-13 19:52:00:779000', 'YYYY-MM-DD HH24:MI:SS:FF6'), '0', '只对项目成员显示配置信息的环境列表，多个env以英文逗号分隔', 'configView.memberOnly.envs', 'pro');
-INSERT INTO "PORTAL_SERVER_CONFIG" VALUES ('11', 'apollo', TO_TIMESTAMP(' 2020-10-13 19:52:00:781000', 'YYYY-MM-DD HH24:MI:SS:FF6'), 'apollo', TO_TIMESTAMP(' 2020-10-13 19:52:00:781000', 'YYYY-MM-DD HH24:MI:SS:FF6'), '0', '各环境Meta Service列表', 'apollo.portal.meta.servers', '{}');
+INSERT INTO "PORTAL_SERVER_CONFIG" VALUES ('4', 'apollo', TO_TIMESTAMP(' 2020-10-14 09:09:30:201000', 'YYYY-MM-DD HH24:MI:SS:FF6'), 'apollo', TO_TIMESTAMP(' 2020-10-14 09:09:30:201000', 'YYYY-MM-DD HH24:MI:SS:FF6'), '0', '可支持的环境列表', 'apollo.portal.envs', 'dev,sit,uat');
+INSERT INTO "PORTAL_SERVER_CONFIG" VALUES ('5', 'apollo', TO_TIMESTAMP(' 2020-10-14 09:09:30:310000', 'YYYY-MM-DD HH24:MI:SS:FF6'), 'apollo', TO_TIMESTAMP(' 2020-10-14 09:09:30:310000', 'YYYY-MM-DD HH24:MI:SS:FF6'), '0', '部门列表', 'organizations', '[{"orgId":"TPIS-00057","orgName":"应用系统三部"}]');
+INSERT INTO "PORTAL_SERVER_CONFIG" VALUES ('6', 'apollo', TO_TIMESTAMP(' 2020-10-14 09:09:30:312000', 'YYYY-MM-DD HH24:MI:SS:FF6'), 'apollo', TO_TIMESTAMP(' 2020-10-14 09:09:30:312000', 'YYYY-MM-DD HH24:MI:SS:FF6'), '0', 'Portal超级管理员', 'superAdmin', 'apollo');
+INSERT INTO "PORTAL_SERVER_CONFIG" VALUES ('7', 'apollo', TO_TIMESTAMP(' 2020-10-14 09:09:30:314000', 'YYYY-MM-DD HH24:MI:SS:FF6'), 'apollo', TO_TIMESTAMP(' 2020-10-14 09:09:30:314000', 'YYYY-MM-DD HH24:MI:SS:FF6'), '0', 'http接口read timeout', 'api.readTimeout', '10000');
+INSERT INTO "PORTAL_SERVER_CONFIG" VALUES ('8', 'apollo', TO_TIMESTAMP(' 2020-10-14 09:09:30:317000', 'YYYY-MM-DD HH24:MI:SS:FF6'), 'apollo', TO_TIMESTAMP(' 2020-10-14 09:09:30:317000', 'YYYY-MM-DD HH24:MI:SS:FF6'), '0', 'consumer token salt', 'consumer.token.salt', 'someSalt');
+INSERT INTO "PORTAL_SERVER_CONFIG" VALUES ('9', 'apollo', TO_TIMESTAMP(' 2020-10-14 09:09:30:319000', 'YYYY-MM-DD HH24:MI:SS:FF6'), 'apollo', TO_TIMESTAMP(' 2020-10-14 09:09:30:319000', 'YYYY-MM-DD HH24:MI:SS:FF6'), '0', '是否允许项目管理员创建私有namespace', 'admin.createPrivateNamespace.switch', 'true');
+INSERT INTO "PORTAL_SERVER_CONFIG" VALUES ('10', 'apollo', TO_TIMESTAMP(' 2020-10-14 09:09:30:321000', 'YYYY-MM-DD HH24:MI:SS:FF6'), 'apollo', TO_TIMESTAMP(' 2020-10-14 09:09:30:321000', 'YYYY-MM-DD HH24:MI:SS:FF6'), '0', '只对项目成员显示配置信息的环境列表，多个env以英文逗号分隔', 'configView.memberOnly.envs', 'pro');
+INSERT INTO "PORTAL_SERVER_CONFIG" VALUES ('11', 'apollo', TO_TIMESTAMP(' 2020-10-14 09:09:30:324000', 'YYYY-MM-DD HH24:MI:SS:FF6'), 'apollo', TO_TIMESTAMP(' 2020-10-14 09:09:30:324000', 'YYYY-MM-DD HH24:MI:SS:FF6'), '0', '各环境Meta Service列表', 'apollo.portal.meta.servers', '{}');
 
 -- ----------------------------
 -- Table structure for PORTAL_USER_ROLE
@@ -810,7 +810,7 @@ NOCACHE
 -- ----------------------------
 -- Records of PORTAL_USERS
 -- ----------------------------
-INSERT INTO "PORTAL_USERS" VALUES ('13', 'apollo@acme.com', '1', '$2a$10$7r20uS.BQ9uBpf3Baj3uQOZvMVvB1RN3PYoKE94gtz2.WAOuiiwXS', 'apollo');
+INSERT INTO "PORTAL_USERS" VALUES ('12', 'apollo@acme.com', '1', '$2a$10$7r20uS.BQ9uBpf3Baj3uQOZvMVvB1RN3PYoKE94gtz2.WAOuiiwXS', 'apollo');
 
 -- ----------------------------
 -- Sequence structure for APOLLO_ID_SEQ
@@ -1306,7 +1306,6 @@ ALTER TABLE "CONFIG_RELEASE" ADD CHECK ("DATACHANGE_LASTMODIFIEDBY" IS NOT NULL)
 ALTER TABLE "CONFIG_RELEASE" ADD CHECK ("DATACHANGE_LASTTIME" IS NOT NULL);
 ALTER TABLE "CONFIG_RELEASE" ADD CHECK ("APP_ID" IS NOT NULL);
 ALTER TABLE "CONFIG_RELEASE" ADD CHECK ("CLUSTER_NAME" IS NOT NULL);
-ALTER TABLE "CONFIG_RELEASE" ADD CHECK ("COMMENT_MSG" IS NOT NULL);
 ALTER TABLE "CONFIG_RELEASE" ADD CHECK ("CONFIGURATIONS" IS NOT NULL);
 ALTER TABLE "CONFIG_RELEASE" ADD CHECK ("NAME" IS NOT NULL);
 ALTER TABLE "CONFIG_RELEASE" ADD CHECK ("NAMESPACE_NAME" IS NOT NULL);
