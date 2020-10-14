@@ -46,12 +46,12 @@ public class InitDb {
     public void initServerConfig(){
         ServerConfig serverConfig=new ServerConfig();
         serverConfig.setKey("apollo.portal.envs");
-        serverConfig.setValue("dev");
+        serverConfig.setValue("dev,sit,uat");
         serverConfig.setComment("可支持的环境列表");
         serverConfigRepository.save(serverConfig);
         ServerConfig serverConfig1=new ServerConfig();
         serverConfig1.setKey("organizations");
-        serverConfig1.setValue("[{\"orgId\":\"TEST1\",\"orgName\":\"样例部门1\"},{\"orgId\":\"TEST2\",\"orgName\":\"样例部门2\"}]");
+        serverConfig1.setValue("[{\"orgId\":\"TPIS-00057\",\"orgName\":\"应用系统三部\"}]");
         serverConfig1.setComment("部门列表");
         serverConfigRepository.save(serverConfig1);
         ServerConfig serverConfig2=new ServerConfig();
