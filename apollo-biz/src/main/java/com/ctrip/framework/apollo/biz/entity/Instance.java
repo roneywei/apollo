@@ -24,16 +24,16 @@ public class Instance {
   @Column(name = "ID")
   private long id;
 
-  @Column(name = "APP_ID", nullable = false)
+  @Column(name = "APP_ID", nullable = false, length = 500)
   private String appId;
 
-  @Column(name = "CLUSTER_NAME", nullable = false)
+  @Column(name = "CLUSTER_NAME", nullable = false, length = 32)
   private String clusterName;
 
-  @Column(name = "DATA_CENTER", nullable = false)
+  @Column(name = "DATA_CENTER", nullable = false, length = 64)
   private String dataCenter;
 
-  @Column(name = "IP", nullable = false)
+  @Column(name = "IP", nullable = false, length = 32)
   private String ip;
 
   @Column(name = "DATACHANGE_CREATEDTIME", nullable = false)

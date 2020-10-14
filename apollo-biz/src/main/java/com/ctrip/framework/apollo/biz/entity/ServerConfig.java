@@ -22,16 +22,16 @@ import javax.persistence.Table;
 @SQLDelete(sql = "Update SERVER_CONFIG set DELETED_FLAG = 1 where ID = ?")
 @Where(clause = "DELETED_FLAG = 0")
 public class ServerConfig extends BaseEntity {
-  @Column(name = "CONFIG_KEY", nullable = false)
+  @Column(name = "CONFIG_KEY", nullable = false, length = 64)
   private String key;
 
-  @Column(name = "CLUSTER_ADDRESS", nullable = false)
+  @Column(name = "CLUSTER_ADDRESS", nullable = false, length = 32)
   private String cluster;
 
-  @Column(name = "CONFIG_VALUE", nullable = false)
+  @Column(name = "CONFIG_VALUE", nullable = false, length = 2048)
   private String value;
 
-  @Column(name = "CONFIG_COMMENT", nullable = false)
+  @Column(name = "CONFIG_COMMENT", length = 1024)
   private String comment;
 
   public String getKey() {

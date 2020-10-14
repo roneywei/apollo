@@ -24,10 +24,10 @@ import javax.persistence.Table;
 @Where(clause = "DELETED_FLAG = 0")
 public class Cluster extends BaseEntity implements Comparable<Cluster> {
 
-  @Column(name = "NAME", nullable = false)
+  @Column(name = "NAME", nullable = false, length = 32)
   private String name;
 
-  @Column(name = "APP_ID", nullable = false)
+  @Column(name = "APP_ID", nullable = false, length = 500)
   private String appId;
 
   @Column(name = "PARENT_CLUSTER_ID", nullable = false)

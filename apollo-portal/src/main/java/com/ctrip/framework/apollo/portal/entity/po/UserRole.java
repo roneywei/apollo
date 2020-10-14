@@ -25,7 +25,7 @@ public class UserRole extends BaseEntity {
   @Column(name = "USER_ID", length = 128)
   private String userId;
 
-  @Column(name = "ROLE_ID", length = 19)
+  @Column(name = "ROLE_ID")
   private long roleId;
 
   public String getUserId() {

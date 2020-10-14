@@ -21,7 +21,7 @@ public class ReleaseMessage {
   @Column(name = "ID")
   private long id;
 
-  @Column(name = "MESSAGE", nullable = false)
+  @Column(name = "MESSAGE", nullable = false, length = 1024)
   private String message;
 
   @Column(name = "DATACHANGE_LASTTIME")

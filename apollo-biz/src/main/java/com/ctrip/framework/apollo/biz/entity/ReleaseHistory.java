@@ -37,13 +37,13 @@ public class ReleaseHistory extends BaseEntity {
   @Column(name = "BRANCH_NAME", nullable = false)
   private String branchName;
 
-  @Column(name = "RELEASE_ID")
+  @Column(name = "RELEASE_ID", nullable = false)
   private long releaseId;
 
-  @Column(name = "PREVIOUS_RELEASE_ID")
+  @Column(name = "PREVIOUS_RELEASE_ID", nullable = false)
   private long previousReleaseId;
 
-  @Column(name = "OPERATION")
+  @Column(name = "OPERATION", nullable = false)
   private int operation;
 
   @Column(name = "OPERATION_CONTEXT", nullable = false)

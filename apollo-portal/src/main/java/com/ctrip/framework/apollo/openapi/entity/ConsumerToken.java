@@ -24,7 +24,7 @@ import javax.persistence.Table;
 @SQLDelete(sql = "Update PORTAL_CONSUMER_TOKEN set DELETED_FLAG = 1 where ID = ?")
 @Where(clause = "DELETED_FLAG = 0")
 public class ConsumerToken extends BaseEntity {
-  @Column(name = "CONSUMER_ID", length = 19)
+  @Column(name = "CONSUMER_ID")
   private long consumerId;
 
   @Column(name = "TOKEN", nullable = false, length = 128)

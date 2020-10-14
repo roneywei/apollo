@@ -27,20 +27,20 @@ public class Release extends BaseEntity {
   @Column(name = "NAME", nullable = false)
   private String name;
 
-  @Column(name = "APP_ID", nullable = false)
+  @Column(name = "APP_ID", nullable = false, length = 500)
   private String appId;
 
-  @Column(name = "CLUSTER_NAME", nullable = false)
+  @Column(name = "CLUSTER_NAME", nullable = false, length = 500)
   private String clusterName;
 
-  @Column(name = "NAMESPACE_NAME", nullable = false)
+  @Column(name = "NAMESPACE_NAME", nullable = false, length = 500)
   private String namespaceName;
 
   @Column(name = "CONFIGURATIONS", nullable = false)
   @Lob
   private String configurations;
 
-  @Column(name = "COMMENT_MSG")
+  @Column(name = "COMMENT_MSG", length = 500)
   private String comment;
 
   @Column(name = "ABANDONED_FLAG", columnDefinition = "Number(1) default 0 ")

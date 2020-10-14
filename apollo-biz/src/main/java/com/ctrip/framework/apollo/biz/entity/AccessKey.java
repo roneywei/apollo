@@ -18,10 +18,10 @@ import javax.persistence.Table;
 @Where(clause = "DELETED_FLAG = 0")
 public class AccessKey extends BaseEntity {
 
-  @Column(name = "APP_ID", nullable = false)
+  @Column(name = "APP_ID", nullable = false, length = 500)
   private String appId;
 
-  @Column(name = "SECRET", nullable = false)
+  @Column(name = "SECRET", nullable = false, length = 128)
   private String secret;
 
   @Column(name = "ENABLED_FLAG", columnDefinition = "Number(1) default 0 ")

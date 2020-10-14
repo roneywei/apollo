@@ -22,11 +22,11 @@ public class Item extends BaseEntity {
   @Column(name = "ITEM_KEY", nullable = false)
   private String key;
 
-  @Column(name = "ITEM_VALUE")
+  @Column(name = "ITEM_VALUE", nullable = false)
   @Lob
   private String value;
 
-  @Column(name = "COMMENT_MSG")
+  @Column(name = "COMMENT_MSG", length = 1024)
   private String comment;
 
   @Column(name = "LINE_NUM")

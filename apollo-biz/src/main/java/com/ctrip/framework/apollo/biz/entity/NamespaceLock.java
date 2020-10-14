@@ -17,7 +17,7 @@ import javax.persistence.*;
 @Where(clause = "DELETED_FLAG = 0")
 public class NamespaceLock extends BaseEntity{
 
-  @Column(name = "NAMESPACE_ID")
+  @Column(name = "NAMESPACE_ID", nullable = false)
   private long namespaceId;
 
   public long getNamespaceId() {

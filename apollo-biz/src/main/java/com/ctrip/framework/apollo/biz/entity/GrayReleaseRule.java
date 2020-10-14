@@ -22,19 +22,19 @@ import javax.persistence.Table;
 @Where(clause = "DELETED_FLAG = 0")
 public class GrayReleaseRule extends BaseEntity{
 
-  @Column(name = "APP_ID", nullable = false)
+  @Column(name = "APP_ID", nullable = false, length = 500)
   private String appId;
 
-  @Column(name = "CLUSTER_NAME", nullable = false)
+  @Column(name = "CLUSTER_NAME", nullable = false, length = 32)
   private String clusterName;
 
-  @Column(name = "NAMESPACE_NAME", nullable = false)
+  @Column(name = "NAMESPACE_NAME", nullable = false, length = 32)
   private String namespaceName;
 
-  @Column(name = "BRANCH_NAME", nullable = false)
+  @Column(name = "BRANCH_NAME", nullable = false, length = 32)
   private String branchName;
 
-  @Column(name = "RULES")
+  @Column(name = "RULES", length = 16000)
   private String rules;
 
   @Column(name = "RELEASE_ID", nullable = false)

@@ -42,7 +42,7 @@ public class InstanceConfig {
   @Column(name = "RELEASE_KEY", nullable = false)
   private String releaseKey;
 
-  @Column(name = "RELEASE_DELIVERY_TIME", nullable = false)
+  @Column(name = "RELEASE_DELIVERY_TIME")
   private Date releaseDeliveryTime;
 
   @Column(name = "DATACHANGE_CREATEDTIME", nullable = false)

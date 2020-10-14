@@ -21,7 +21,7 @@ public class ConsumerAudit {
   @Column(name = "ID")
   private long id;
 
-  @Column(name = "CONSUMER_ID", length = 19)
+  @Column(name = "CONSUMER_ID")
   private long consumerId;
 
   @Column(name = "URI", nullable = false, length = 1024)

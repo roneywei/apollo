@@ -22,16 +22,16 @@ public class Commit extends BaseEntity {
   @Column(name = "CHANGE_SETS", nullable = false)
   private String changeSets;
 
-  @Column(name = "APP_ID", nullable = false)
+  @Column(name = "APP_ID", nullable = false, length = 500)
   private String appId;
 
-  @Column(name = "CLUSTER_NAME", nullable = false)
+  @Column(name = "CLUSTER_NAME", nullable = false, length = 500)
   private String clusterName;
 
-  @Column(name = "NAMESPACE_NAME", nullable = false)
+  @Column(name = "NAMESPACE_NAME", nullable = false, length = 500)
   private String namespaceName;
 
-  @Column(name = "COMMENT_MSG")
+  @Column(name = "COMMENT_MSG", length = 500)
   private String comment;
 
   public String getChangeSets() {
