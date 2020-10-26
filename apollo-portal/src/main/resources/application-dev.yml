@@ -1,6 +1,6 @@
 spring:
   datasource:
     driver-class-name: oracle.jdbc.driver.OracleDriver
-    password: TPmall_sit2020
-    url: jdbc:oracle:thin:@//10.28.137.123:1521/tpesuat
-    username: tpmall_sit
+    password: tpmall
+    url: jdbc:oracle:thin:@//127.0.0.1:1521/orcl
+    username: tpmall
