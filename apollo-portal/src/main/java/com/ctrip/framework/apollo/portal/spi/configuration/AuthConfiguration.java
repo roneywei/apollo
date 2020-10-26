@@ -238,17 +238,17 @@ public class AuthConfiguration {
           .getUserDetailsService();
 
       jdbcUserDetailsManager.setUserExistsSql("SELECT USERNAME FROM PORTAL_USERS WHERE USERNAME = ?");
-      jdbcUserDetailsManager
-          .setCreateUserSql("INSERT INTO PORTAL_USERS (USERNAME, PASSWORD, ENABLED) VALUES (?,?,?)");
-      jdbcUserDetailsManager
-          .setUpdateUserSql("UPDATE PORTAL_USERS SET PASSWORD = ?, ENABLED = ? WHERE ID = (SELECT U.ID FROM (SELECT ID FROM PORTAL_USERS WHERE USERNAME = ?) AS U)");
-      jdbcUserDetailsManager.setDeleteUserSql("DELETE FROM PORTAL_USERS WHERE ID = (SELECT U.ID FROM (SELECT ID FROM PORTAL_USERS WHERE USERNAME = ?) AS U)");
-      jdbcUserDetailsManager
-          .setCreateAuthoritySql("INSERT INTO PORTAL_AUTHORITIES (USERNAME, AUTHORITY) VALUES (?,?)");
-      jdbcUserDetailsManager
-          .setDeleteUserAuthoritiesSql("DELETE FROM PORTAL_AUTHORITIES WHERE ID IN (SELECT A.ID FROM (SELECT ID FROM PORTAL_AUTHORITIES WHERE USERNAME = ?) AS A)");
-      jdbcUserDetailsManager
-          .setChangePasswordSql("UPDATE PORTAL_USERS SET PASSWORD = ? WHERE ID = (SELECT U.ID FROM (SELECT ID FROM PORTAL_USERS WHERE USERNAME = ?) AS U)");
+//      jdbcUserDetailsManager
+//          .setCreateUserSql("INSERT INTO PORTAL_USERS (USERNAME, PASSWORD, ENABLED) VALUES (?,?,?)");
+//      jdbcUserDetailsManager
+//          .setUpdateUserSql("UPDATE PORTAL_USERS SET PASSWORD = ?, ENABLED = ? WHERE ID = (SELECT U.ID FROM (SELECT ID FROM PORTAL_USERS WHERE USERNAME = ?)  U)");
+//      jdbcUserDetailsManager.setDeleteUserSql("DELETE FROM PORTAL_USERS WHERE ID = (SELECT U.ID FROM (SELECT ID FROM PORTAL_USERS WHERE USERNAME = ?)  U)");
+//      jdbcUserDetailsManager
+//          .setCreateAuthoritySql("INSERT INTO PORTAL_AUTHORITIES (USERNAME, AUTHORITY) VALUES (?,?)");
+//      jdbcUserDetailsManager
+//          .setDeleteUserAuthoritiesSql("DELETE FROM PORTAL_AUTHORITIES WHERE ID IN (SELECT A.ID FROM (SELECT ID FROM PORTAL_AUTHORITIES WHERE USERNAME = ?)  A)");
+//      jdbcUserDetailsManager
+//          .setChangePasswordSql("UPDATE PORTAL_USERS SET PASSWORD = ? WHERE ID = (SELECT U.ID FROM (SELECT ID FROM PORTAL_USERS WHERE USERNAME = ?)  U)");
 
       return jdbcUserDetailsManager;
     }

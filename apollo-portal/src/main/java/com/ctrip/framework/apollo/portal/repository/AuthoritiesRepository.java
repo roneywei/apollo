@@ -15,4 +15,5 @@ import org.springframework.data.repository.PagingAndSortingRepository;
 public interface AuthoritiesRepository extends PagingAndSortingRepository<Authorities, Long> {
 
 
+    void deleteByUsername(String username);
 }

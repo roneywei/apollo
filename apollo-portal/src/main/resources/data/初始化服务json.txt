@@ -1,0 +1,442 @@
+[
+    {
+        "admins": [
+            "admin"
+        ],
+        "appId": "supplier-service",
+        "name": "supplier-service服务",
+        "orgId": "TPIS-00057",
+        "orgName": "应用系统三部",
+        "ownerName": "apollo"
+    },
+    {
+        "admins": [
+            "admin"
+        ],
+        "appId": "aftersale-service",
+        "name": "aftersale-service服务",
+        "orgId": "TPIS-00057",
+        "orgName": "应用系统三部",
+        "ownerName": "apollo"
+    },
+    {
+        "admins": [
+            "admin"
+        ],
+        "appId": "order-web-api",
+        "name": "order-web-api服务",
+        "orgId": "TPIS-00057",
+        "orgName": "应用系统三部",
+        "ownerName": "apollo"
+    },
+    {
+        "admins": [
+            "admin"
+        ],
+        "appId": "bidding-web",
+        "name": "bidding-web服务",
+        "orgId": "TPIS-00057",
+        "orgName": "应用系统三部",
+        "ownerName": "apollo"
+    },
+    {
+        "admins": [
+            "admin"
+        ],
+        "appId": "finance-service",
+        "name": "finance-service服务",
+        "orgId": "TPIS-00057",
+        "orgName": "应用系统三部",
+        "ownerName": "apollo"
+    },
+    {
+        "admins": [
+            "admin"
+        ],
+        "appId": "uninogift-service",
+        "name": "uninogift-service服务",
+        "orgId": "TPIS-00057",
+        "orgName": "应用系统三部",
+        "ownerName": "apollo"
+    },
+    {
+        "admins": [
+            "admin"
+        ],
+        "appId": "cloud-shopping",
+        "name": "cloud-shopping服务",
+        "orgId": "TPIS-00057",
+        "orgName": "应用系统三部",
+        "ownerName": "apollo"
+    },
+    {
+        "admins": [
+            "admin"
+        ],
+        "appId": "intranet-interface-service",
+        "name": "intranet-interface-service服务",
+        "orgId": "TPIS-00057",
+        "orgName": "应用系统三部",
+        "ownerName": "apollo"
+    },
+    {
+        "admins": [
+            "admin"
+        ],
+        "appId": "timer-service",
+        "name": "timer-service服务",
+        "orgId": "TPIS-00057",
+        "orgName": "应用系统三部",
+        "ownerName": "apollo"
+    },
+    {
+        "admins": [
+            "admin"
+        ],
+        "appId": "user-service",
+        "name": "user-service服务",
+        "orgId": "TPIS-00057",
+        "orgName": "应用系统三部",
+        "ownerName": "apollo"
+    },
+    {
+        "admins": [
+            "admin"
+        ],
+        "appId": "mall-cart-service",
+        "name": "mall-cart-service服务",
+        "orgId": "TPIS-00057",
+        "orgName": "应用系统三部",
+        "ownerName": "apollo"
+    },
+    {
+        "admins": [
+            "admin"
+        ],
+        "appId": "szjd-service",
+        "name": "szjd-service服务",
+        "orgId": "TPIS-00057",
+        "orgName": "应用系统三部",
+        "ownerName": "apollo"
+    },
+    {
+        "admins": [
+            "admin"
+        ],
+        "appId": "configure-service",
+        "name": "configure-service服务",
+        "orgId": "TPIS-00057",
+        "orgName": "应用系统三部",
+        "ownerName": "apollo"
+    },
+    {
+        "admins": [
+            "admin"
+        ],
+        "appId": "payment-service",
+        "name": "payment-service服务",
+        "orgId": "TPIS-00057",
+        "orgName": "应用系统三部",
+        "ownerName": "apollo"
+    },
+    {
+        "admins": [
+            "admin"
+        ],
+        "appId": "motan-manager",
+        "name": "motan-manager服务",
+        "orgId": "TPIS-00057",
+        "orgName": "应用系统三部",
+        "ownerName": "apollo"
+    },
+    {
+        "admins": [
+            "admin"
+        ],
+        "appId": "provider-trdsp-service",
+        "name": "provider-trdsp-service服务",
+        "orgId": "TPIS-00057",
+        "orgName": "应用系统三部",
+        "ownerName": "apollo"
+    },
+    {
+        "admins": [
+            "admin"
+        ],
+        "appId": "search-service",
+        "name": "search-service服务",
+        "orgId": "TPIS-00057",
+        "orgName": "应用系统三部",
+        "ownerName": "apollo"
+    },
+    {
+        "admins": [
+            "admin"
+        ],
+        "appId": "uploader",
+        "name": "uploader服务",
+        "orgId": "TPIS-00057",
+        "orgName": "应用系统三部",
+        "ownerName": "apollo"
+    },
+    {
+        "admins": [
+            "admin"
+        ],
+        "appId": "store-service",
+        "name": "store-service服务",
+        "orgId": "TPIS-00057",
+        "orgName": "应用系统三部",
+        "ownerName": "apollo"
+    },
+    {
+        "admins": [
+            "admin"
+        ],
+        "appId": "protocol-purchase-web",
+        "name": "protocol-purchase-web服务",
+        "orgId": "TPIS-00057",
+        "orgName": "应用系统三部",
+        "ownerName": "apollo"
+    },
+    {
+        "admins": [
+            "admin"
+        ],
+        "appId": "workflow-service",
+        "name": "workflow-service服务",
+        "orgId": "TPIS-00057",
+        "orgName": "应用系统三部",
+        "ownerName": "apollo"
+    },
+    {
+        "admins": [
+            "admin"
+        ],
+        "appId": "internal-sso-service",
+        "name": "internal-sso-service服务",
+        "orgId": "TPIS-00057",
+        "orgName": "应用系统三部",
+        "ownerName": "apollo"
+    },
+    {
+        "admins": [
+            "admin"
+        ],
+        "appId": "cart-service",
+        "name": "cart-service服务",
+        "orgId": "TPIS-00057",
+        "orgName": "应用系统三部",
+        "ownerName": "apollo"
+    },
+    {
+        "admins": [
+            "admin"
+        ],
+        "appId": "yuncai-gw",
+        "name": "yuncai-gw服务",
+        "orgId": "TPIS-00057",
+        "orgName": "应用系统三部",
+        "ownerName": "apollo"
+    },
+    {
+        "admins": [
+            "admin"
+        ],
+        "appId": "mall-order-service",
+        "name": "mall-order-service服务",
+        "orgId": "TPIS-00057",
+        "orgName": "应用系统三部",
+        "ownerName": "apollo"
+    },
+    {
+        "admins": [
+            "admin"
+        ],
+        "appId": "spring-boot-admin-server",
+        "name": "spring-boot-admin-server服务",
+        "orgId": "TPIS-00057",
+        "orgName": "应用系统三部",
+        "ownerName": "apollo"
+    },
+    {
+        "admins": [
+            "admin"
+        ],
+        "appId": "admin-web",
+        "name": "admin-web服务",
+        "orgId": "TPIS-00057",
+        "orgName": "应用系统三部",
+        "ownerName": "apollo"
+    },
+    {
+        "admins": [
+            "admin"
+        ],
+        "appId": "mall-provider-api-gateway",
+        "name": "mall-provider-api-gateway服务",
+        "orgId": "TPIS-00057",
+        "orgName": "应用系统三部",
+        "ownerName": "apollo"
+    },
+    {
+        "admins": [
+            "admin"
+        ],
+        "appId": "caigou-web",
+        "name": "caigou-web服务",
+        "orgId": "TPIS-00057",
+        "orgName": "应用系统三部",
+        "ownerName": "apollo"
+    },
+    {
+        "admins": [
+            "admin"
+        ],
+        "appId": "suning-service",
+        "name": "suning-service服务",
+        "orgId": "TPIS-00057",
+        "orgName": "应用系统三部",
+        "ownerName": "apollo"
+    },
+    {
+        "admins": [
+            "admin"
+        ],
+        "appId": "distributed-job-admin",
+        "name": "distributed-job-admin服务",
+        "orgId": "TPIS-00057",
+        "orgName": "应用系统三部",
+        "ownerName": "apollo"
+    },
+    {
+        "admins": [
+            "admin"
+        ],
+        "appId": "sms-mail-service",
+        "name": "sms-mail-service服务",
+        "orgId": "TPIS-00057",
+        "orgName": "应用系统三部",
+        "ownerName": "apollo"
+    },
+    {
+        "admins": [
+            "admin"
+        ],
+        "appId": "protocol-purchase-service",
+        "name": "protocol-purchase-service服务",
+        "orgId": "TPIS-00057",
+        "orgName": "应用系统三部",
+        "ownerName": "apollo"
+    },
+    {
+        "admins": [
+            "admin"
+        ],
+        "appId": "provider-pool-service",
+        "name": "provider-pool-service服务",
+        "orgId": "TPIS-00057",
+        "orgName": "应用系统三部",
+        "ownerName": "apollo"
+    },
+    {
+        "admins": [
+            "admin"
+        ],
+        "appId": "store-admin-web",
+        "name": "store-admin-web服务",
+        "orgId": "TPIS-00057",
+        "orgName": "应用系统三部",
+        "ownerName": "apollo"
+    },
+    {
+        "admins": [
+            "admin"
+        ],
+        "appId": "activities-service",
+        "name": "activities-service服务",
+        "orgId": "TPIS-00057",
+        "orgName": "应用系统三部",
+        "ownerName": "apollo"
+    },
+    {
+        "admins": [
+            "admin"
+        ],
+        "appId": "provider-message-service",
+        "name": "provider-message-service服务",
+        "orgId": "TPIS-00057",
+        "orgName": "应用系统三部",
+        "ownerName": "apollo"
+    },
+    {
+        "admins": [
+            "admin"
+        ],
+        "appId": "mall-goods-service",
+        "name": "mall-goods-service服务",
+        "orgId": "TPIS-00057",
+        "orgName": "应用系统三部",
+        "ownerName": "apollo"
+    },
+    {
+        "admins": [
+            "admin"
+        ],
+        "appId": "uninogift-admin-web",
+        "name": "uninogift-admin-web服务",
+        "orgId": "TPIS-00057",
+        "orgName": "应用系统三部",
+        "ownerName": "apollo"
+    },
+    {
+        "admins": [
+            "admin"
+        ],
+        "appId": "cms-service",
+        "name": "cms-service服务",
+        "orgId": "TPIS-00057",
+        "orgName": "应用系统三部",
+        "ownerName": "apollo"
+    },
+    {
+        "admins": [
+            "admin"
+        ],
+        "appId": "uninogift-mobile",
+        "name": "uninogift-mobile服务",
+        "orgId": "TPIS-00057",
+        "orgName": "应用系统三部",
+        "ownerName": "apollo"
+    },
+    {
+        "admins": [
+            "admin"
+        ],
+        "appId": "shipping-service",
+        "name": "shipping-service服务",
+        "orgId": "TPIS-00057",
+        "orgName": "应用系统三部",
+        "ownerName": "apollo"
+    },
+    {
+        "admins": [
+            "admin"
+        ],
+        "appId": "spider-service",
+        "name": "spider-service服务",
+        "orgId": "TPIS-00057",
+        "orgName": "应用系统三部",
+        "ownerName": "apollo"
+    },
+    {
+        "admins": [
+            "admin"
+        ],
+        "appId": "system-message-service",
+        "name": "system-message-service服务",
+        "orgId": "TPIS-00057",
+        "orgName": "应用系统三部",
+        "ownerName": "apollo"
+    }
+]

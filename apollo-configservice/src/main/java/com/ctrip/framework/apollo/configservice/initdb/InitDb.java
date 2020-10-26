@@ -27,7 +27,7 @@ public class InitDb {
         ServerConfig serverConfig=new ServerConfig();
         serverConfig.setKey("eureka.service.url");
         serverConfig.setCluster("default");
-        serverConfig.setValue("http://localhost:8080/eureka/");
+        serverConfig.setValue("http://localhost:6060/eureka/");
         serverConfig.setComment("Eureka服务Url，多个service以英文逗号分隔");
         serverConfigRepository.save(serverConfig);
 

@@ -1,5 +1,8 @@
 package com.ctrip.framework.apollo.portal.spi.springsecurity;
 
+import com.ctrip.framework.apollo.portal.entity.po.Authorities;
+import com.ctrip.framework.apollo.portal.repository.AuthoritiesRepository;
+import com.ctrip.framework.apollo.portal.service.AuthoritiesService;
 import com.google.common.collect.Lists;
 
 import com.ctrip.framework.apollo.core.utils.StringUtils;
@@ -38,6 +41,9 @@ public class SpringSecurityUserService implements UserService {
   @Autowired
   private UserRepository userRepository;
 
+  @Autowired
+  private AuthoritiesService authoritiesService;
+
   @PostConstruct
   public void init() {
     authorities = new ArrayList<>();
@@ -51,15 +57,36 @@ public class SpringSecurityUserService implements UserService {
     User userDetails = new User(username, encoder.encode(user.getPassword()), authorities);
 
     if (userDetailsManager.userExists(username)) {
-      userDetailsManager.updateUser(userDetails);
+      //userDetailsManager.updateUser(userDetails);
+      UserPO managedUser = userRepository.findByUsername(username);
+      managedUser.setUsername(userDetails.getUsername());
+      managedUser.setPassword(userDetails.getPassword());
+      managedUser.setEmail(user.getEmail());
+      managedUser.setEnabled(1);
+      userRepository.save(managedUser);
+      authoritiesService.deleteByUsername(userDetails.getUsername());
+      for(GrantedAuthority authoritie : authorities) {
+        Authorities authorities = new Authorities();
+        authorities.setUsername(userDetails.getUsername());
+        authorities.setAuthority(authoritie.getAuthority());
+        authoritiesService.save(authorities);
+      }
     } else {
-      userDetailsManager.createUser(userDetails);
+      //userDetailsManager.createUser(userDetails);
+      UserPO userPO=new UserPO();
+      userPO.setUsername(userDetails.getUsername());
+      userPO.setPassword(userDetails.getPassword());
+      userPO.setEmail(user.getEmail());
+      userPO.setEnabled(1);
+      userRepository.save(userPO);
+      for(GrantedAuthority authoritie : authorities) {
+        Authorities authorities = new Authorities();
+        authorities.setUsername(userDetails.getUsername());
+        authorities.setAuthority(authoritie.getAuthority());
+        authoritiesService.save(authorities);
+      }
     }
 
-    UserPO managedUser = userRepository.findByUsername(username);
-    managedUser.setEmail(user.getEmail());
-
-    userRepository.save(managedUser);
   }
 
   @Override

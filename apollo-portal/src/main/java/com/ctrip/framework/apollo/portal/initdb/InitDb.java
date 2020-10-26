@@ -46,7 +46,7 @@ public class InitDb {
     public void initServerConfig(){
         ServerConfig serverConfig=new ServerConfig();
         serverConfig.setKey("apollo.portal.envs");
-        serverConfig.setValue("dev,sit,uat");
+        serverConfig.setValue("sit");
         serverConfig.setComment("可支持的环境列表");
         serverConfigRepository.save(serverConfig);
         ServerConfig serverConfig1=new ServerConfig();

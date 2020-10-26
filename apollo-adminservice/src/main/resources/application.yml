@@ -21,5 +21,5 @@ server:
   port: 8090
   
 logging:
-  file: /opt/logs/100003172/apollo-adminservice.log
+  file: /tpdata/log/100003172/apollo-adminservice.log
 

@@ -25,6 +25,6 @@ public interface AppRepository extends PagingAndSortingRepository<PortalApp, Lon
   Page<PortalApp> findByAppIdContainingOrNameContaining(String appId, String name, Pageable pageable);
 
   @Modifying
-  @Query("UPDATE PortalApp SET IsDeleted=1,DataChange_LastModifiedBy = ?2 WHERE AppId=?1")
+  @Query("UPDATE PortalApp SET isDeleted=1,dataChangeLastModifiedBy = ?2 WHERE appId=?1")
   int deleteApp(String appId, String operator);
 }
