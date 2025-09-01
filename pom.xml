@@ -602,6 +602,39 @@
 		</resources>
 	</build>
 	<profiles>
+
+		<!-- 开发 -->
+		<profile>
+			<id>local</id>
+			<activation>
+				<!--默认激活配置-->
+				<activeByDefault>true</activeByDefault>
+			</activation>
+			<properties>
+				<!--当前环境-->
+				<!-- apollo.assembly.profile: github | k8s | docker | native -->
+				<apollo.assembly.profile>github</apollo.assembly.profile>
+				<!-- assembly db url -->
+				<apollo.assembly.spring.datasource.url>jdbc:mysql://localhost:3306/ApolloConfigDB?characterEncoding=utf8</apollo.assembly.spring.datasource.url>
+				<!-- assembly db username -->
+				<apollo.assembly.spring.datasource.username>root</apollo.assembly.spring.datasource.username>
+				<!-- assembly db password -->
+				<apollo.assembly.spring.datasource.password>root</apollo.assembly.spring.datasource.password>
+
+				<!-- apollo.portal.profile: github | k8s | docker | native -->
+				<apollo.portal.profile>github,auth</apollo.portal.profile>
+				<!-- portal db url -->
+				<apollo.portal.spring.datasource.url>jdbc:mysql://localhost:3306/ApolloPortalDB?characterEncoding=utf8</apollo.portal.spring.datasource.url>
+				<!-- portal db username -->
+				<apollo.portal.spring.datasource.username>root</apollo.portal.spring.datasource.username>
+				<!-- portal db password -->
+				<apollo.portal.spring.datasource.password>root</apollo.portal.spring.datasource.password>
+
+			</properties>
+		</profile>
+
+
+
 		<profile>
 			<!-- for open source usage -->
 			<id>github</id>
